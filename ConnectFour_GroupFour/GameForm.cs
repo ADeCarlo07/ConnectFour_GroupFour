@@ -10,14 +10,30 @@ using System.Windows.Forms;
 
 namespace ConnectFour_GroupFour
 {
-    public partial class Form1 : Form
+    public partial class GameForm : Form
     {
+        StartForm sform;
         private Board gameBoard;
-        public Form1()
+        public GameForm()
         {
             InitializeComponent();
             gameBoard = new Board();
             InitializeBoard();
+
+            //Form is loaded to the center of the screen
+            this.StartPosition = FormStartPosition.CenterScreen;
+            //Below if we want to manual position the form to the top left as the directions mentioned
+            //this.StartPosition = FormStartPosition.Manual;
+            //this.Top = 0;
+            //this.RightToLeft = 0;
+        }
+
+        public GameForm(StartForm sf)
+        {
+            InitializeComponent();
+
+            //global variable of the start form so it can be referenced
+            sform = sf;
         }
 
         private void InitializeBoard()
@@ -92,14 +108,26 @@ namespace ConnectFour_GroupFour
 
                     //this is just for testing purposes, when game is more fleshed out there
                     //will be more checks involved before placing a piece
-                    //if (!c.GetCellContainPiece())
-                    //{
-                        //c.SetCellContainsPiece(true);
-                        //set the buttons background image to whatever color piece
-                    //}
+                    //GC: added a visual so we can tell at a glance when a piece occupies a cell, images to be added later
+                    if (!c.GetCellContainPiece())
+                    {
+                        //testing: when button is pressed for the first time, sets contains piece to true and changes back color to red
+                        c.SetCellContainsPiece(true);
+                        button.BackColor = Color.Red;
+                    }
+                    else
+                    {
+                        //testing: when button is pressed for the second time, sets contains piece to false and changes back to white
+                        c.SetCellContainsPiece(false);
+                        button.BackColor = Color.White;
+                    }
                 }
             }
         }
-
+        private void GameForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            //calls the close form function to close the application
+            sform.closeForms();
+        }
     }
 }
