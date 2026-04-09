@@ -26,6 +26,48 @@ namespace ConnectFour_GroupFour
             return gameBoard[r, c];
         }
 
+        //Could be changed/removed. Just thought they would be helpful when
+        //checking for things on the board
+        public Cell GetCellBelow(int r, int c)
+        {
+            return gameBoard[r + 1, c];
+        }
+
+        public Cell GetCellToRight(int r, int c)
+        {
+            return gameBoard[r, c + 1];
+        }
+
+        public Cell GetCellToLeft(int r, int c)
+        {
+            return gameBoard[r, c - 1];
+        }
+
+        public Cell GetCellAbove(int r, int c)
+        {
+            return gameBoard[r - 1, c];
+        }
+
+        public Cell GetCellDiagonalUpperRight(int r, int c)
+        {
+            return gameBoard[r - 1, c + 1];
+        }
+
+        public Cell GetCellDiagonalUpperLeft(int r, int c)
+        {
+            return gameBoard[r - 1, c - 1];
+        }
+
+        public Cell GetCellDiagonalLowerRight(int r, int c)
+        {
+            return gameBoard[r + 1, c + 1];
+        }
+
+        public Cell GetDiagonalLowerLeft(int r, int c)
+        {
+            return gameBoard[r + 1, c - 1];
+        }
+
         public Cell[,] GetGameBoard()
         {
             return gameBoard;

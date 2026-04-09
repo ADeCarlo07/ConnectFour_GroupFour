@@ -32,6 +32,10 @@ namespace ConnectFour_GroupFour
         {
             InitializeComponent();
 
+            //added because error kept displaying saying gameBoard was null
+            gameBoard = new Board();
+            InitializeBoard();
+
             //global variable of the start form so it can be referenced
             sform = sf;
         }
@@ -89,7 +93,8 @@ namespace ConnectFour_GroupFour
             }
         }
 
-        private void CellButtonPressed(object sender, EventArgs e)
+        //async allows for use of delays
+        private async void CellButtonPressed(object sender, EventArgs e)
         {
             //get the button pressed
             Button button = (Button)sender;
@@ -111,9 +116,88 @@ namespace ConnectFour_GroupFour
                     //GC: added a visual so we can tell at a glance when a piece occupies a cell, images to be added later
                     if (!c.GetCellContainPiece())
                     {
-                        //testing: when button is pressed for the first time, sets contains piece to true and changes back color to red
-                        c.SetCellContainsPiece(true);
-                        button.BackColor = Color.Red;
+                        //make sure there is something bellow the piece if they are placing mid-air
+                        if (c.GetRow() != 5)
+                        {
+                            //for testing purposes
+                            Console.WriteLine("Player attempted to place piece above row 5");
+
+                            if (!gameBoard.GetCellBelow(c.GetRow(), c.GetCol()).GetCellContainPiece())
+                            {
+                                //if this if statement is triggered then it means there is no piece below
+                                //the cell that was clicked
+
+                                //the col doesn't matter since it will stay the same as original cell clicked
+                                int rowBelowCurCell = gameBoard.GetCellBelow(c.GetRow(), c.GetCol()).GetRow();
+
+                                //this loop will go through every row until it reaches row 5
+                                //if it finds a cell with a piece below it, it is safe to place
+                                //if it reaches row 5, it is safe to place
+                                for (int i = 0; i < 5; i++)
+                                {
+                                    int r = rowBelowCurCell + i;
+
+                                    //**this will have to be edited and revised as we make more logic
+                                    //to the game. For now its purpose is to be like a falling
+                                    //"animation" without really being an animation
+                                    if (i == 0)
+                                    {
+                                        //I had trouble with getting the cell that was clicked to be
+                                        //red so I went with this sloppy solution, don't judge too hard
+                                        c.GetButton().BackColor = Color.Red;
+                                        await Task.Delay(300);
+                                        c.GetButton().BackColor = Color.White;
+
+                                    }
+
+                                    if (r - 1 > c.GetRow())
+                                    {
+                                        Cell prevCell = gameBoard.GetCell(r - 1, c.GetCol());
+                                        prevCell.GetButton().BackColor = Color.White;
+                                    }
+
+                                    Cell cell = gameBoard.GetCell(r, c.GetCol());
+                                    cell.GetButton().BackColor = Color.Red;
+
+                                    await Task.Delay(300);
+
+                                    //end of animation code
+
+                                    if (r == 5 || gameBoard.GetCellBelow(r, c.GetCol()).GetCellContainPiece())
+                                    {
+                                        //they reached the bottom without finding a cell that contains a piece
+                                        Console.WriteLine("Safe cell found, ROW: " + r + "   COL: " + c.GetCol());
+
+                                        //place piece, it wont be mid-air
+                                        //testing: when button is pressed for the first time, sets contains piece to true and changes back color to red
+                                        Cell safeCell = gameBoard.GetCell(r, c.GetCol());
+
+                                        safeCell.SetCellContainsPiece(true);
+                                        safeCell.GetButton().BackColor = Color.Red;
+
+                                        //break out of loop, could be removed later I just don't want it to keep
+                                        //going on if it doesn't have to
+                                        break;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                //testing: when button is pressed for the first time, sets contains piece to true and changes back color to red
+                                c.SetCellContainsPiece(true);
+                                button.BackColor = Color.Red;
+                            }
+                           
+                        }
+                        else
+                        {
+                            //place piece, it wont be mid-air
+                            //testing: when button is pressed for the first time, sets contains piece to true and changes back color to red
+                            c.SetCellContainsPiece(true);
+                            button.BackColor = Color.Red;
+                        }
+
+
                     }
                     else
                     {
