@@ -33,7 +33,7 @@ namespace ConnectFour_GroupFour
             return ColHeight[i];
         }
 
-        public void addPiece(int col)// adds a cell to the given Col
+        public void addPiece(int col, int player)// adds a cell to the given Col
         {
             
             if (ColHeight[col] >= 0)//safety check, make sure we are not in a negative col
@@ -41,8 +41,15 @@ namespace ConnectFour_GroupFour
                 Console.WriteLine("PLACING IN COL: " + col);
                 //at the height of the col in the col
                 gameBoard[ColHeight[col], col].SetCellContainsPiece(true);//make the cell contain a piece
-                gameBoard[ColHeight[col], col].GetButton().BackColor = Color.Red;
-
+                //changes colors now, no longer just red
+                if(player == 1)
+                {
+                    gameBoard[ColHeight[col], col].GetButton().BackColor = Color.Red;
+                }
+                else
+                {
+                    gameBoard[ColHeight[col], col].GetButton().BackColor = Color.Yellow;
+                }
                 ColHeight[col]--;//tell the board the height change
             }
         }

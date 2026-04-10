@@ -14,11 +14,15 @@ namespace ConnectFour_GroupFour
     {
         StartForm sform;
         private Board gameBoard;
+        int currentPlayer = 1; //player 1 starts(red)
+        int gameMode; //1 = single player, 2 = 2 players
         public GameForm()
         {
             InitializeComponent();
             gameBoard = new Board();
             InitializeBoard();
+
+            UpdateTurnLabel();
 
             //Form is loaded to the center of the screen
             this.StartPosition = FormStartPosition.CenterScreen;
@@ -28,7 +32,7 @@ namespace ConnectFour_GroupFour
             //this.RightToLeft = 0;
         }
 
-        public GameForm(StartForm sf)
+        public GameForm(StartForm sf, int mode)
         {
             InitializeComponent();
 
@@ -38,6 +42,7 @@ namespace ConnectFour_GroupFour
 
             //global variable of the start form so it can be referenced
             sform = sf;
+            gameMode = mode;
         }
 
         private void InitializeBoard()
@@ -116,7 +121,23 @@ namespace ConnectFour_GroupFour
                     //GC: added a visual so we can tell at a glance when a piece occupies a cell, images to be added later
                     if (!c.GetCellContainPiece())
                     {//If cell does not contain a piece
-                        gameBoard.addPiece(c.GetCol());
+                        gameBoard.addPiece(c.GetCol(), currentPlayer);
+                        //switches between player turns after placing a piece
+                        if(currentPlayer == 1)
+                        {
+                            currentPlayer = 2;
+                        }
+                        else
+                        {
+                            currentPlayer = 1;
+                        }
+                        //FOR AI LOGIC:
+                        //it would look something like this
+                        //if(gameMode == 1 && currentPlayer == 2)
+                        //{
+                        ////ai algorithm
+                        //}
+                        UpdateTurnLabel();
                     }
                     else
                     {
@@ -133,6 +154,32 @@ namespace ConnectFour_GroupFour
         {
             //calls the close form function to close the application
             sform.closeForms();
+        }
+        //explicitly states whose turn it is and changes once a piece is added
+        private void UpdateTurnLabel()
+        {
+            if (gameMode == 2)
+            {
+                if (currentPlayer == 1)
+                {
+                    lbl_turn.Text = "Player 1's Turn";
+                }
+                else
+                {
+                    lbl_turn.Text = "Player 2's Turn";
+                }
+            }
+            else
+            {
+                if(currentPlayer == 1)
+                {
+                    lbl_turn.Text = "Player 1's Turn";
+                }
+                else
+                {
+                    lbl_turn.Text = "Computer's Turn";
+                }
+            }
         }
     }
 }

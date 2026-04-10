@@ -30,7 +30,7 @@ namespace ConnectFour_GroupFour
         {
             //using overloaded constructor to load the original StartForm
             //will need to update to pass if singleplayer or twoplayer is clicked down the line
-            GameForm formToLoad = new GameForm(this);
+            GameForm formToLoad = new GameForm(this, p);
 
             //loads the display form
             formToLoad.Show();
