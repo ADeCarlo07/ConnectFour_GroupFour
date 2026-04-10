@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,7 @@ namespace ConnectFour_GroupFour
         private const int numRows = 6;
         private const int numCols = 7;
         Cell[,] gameBoard = new Cell[numRows, numCols];
+        int[] ColHeight = {5,5,5,5,5,5,5};//how many pieces are in each col The Bottom is row 5, so -1 every time a piece is added
 
         public int GetNumRows()
         {
@@ -24,6 +26,25 @@ namespace ConnectFour_GroupFour
         public Cell GetCell(int r, int c)
         {
             return gameBoard[r, c];
+        }
+
+        public int GetColHeight(int i)
+        {
+            return ColHeight[i];
+        }
+
+        public void addPiece(int col)// adds a cell to the given Col
+        {
+            
+            if (ColHeight[col] >= 0)//safety check, make sure we are not in a negative col
+            {
+                Console.WriteLine("PLACING IN COL: " + col);
+                //at the height of the col in the col
+                gameBoard[ColHeight[col], col].SetCellContainsPiece(true);//make the cell contain a piece
+                gameBoard[ColHeight[col], col].GetButton().BackColor = Color.Red;
+
+                ColHeight[col]--;//tell the board the height change
+            }
         }
 
         //Could be changed/removed. Just thought they would be helpful when
