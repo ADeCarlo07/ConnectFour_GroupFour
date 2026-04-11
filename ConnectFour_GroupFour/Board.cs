@@ -56,9 +56,30 @@ namespace ConnectFour_GroupFour
                     gameBoard[ColHeight[col], col].SetPieceColor(2);
                     ColHeight[col]--;//tell the board the height change
                 }
-                
             }
         }
+        //shows the players move
+        public void showMove(int col, int player, bool hover)
+        {
+            //once mouse is no longer hovering over the button, changes color back to default
+            if (!hover)
+            {
+                gameBoard[ColHeight[col], col].GetButton().BackColor = Color.White;
+            }
+            //when mouse goes over a cell, changes color to indicate move placement
+            else
+            {
+                if (player == 1)
+                {
+                    gameBoard[ColHeight[col], col].GetButton().BackColor = Color.Pink;
+                }
+                else
+                {
+                    gameBoard[ColHeight[col], col].GetButton().BackColor = Color.LightYellow;
+                }
+            }
+        }
+
         // Enemy Ai Things ==================================================================================================================================
         // ==================================================================================================================================
         // ==================================================================================================================================

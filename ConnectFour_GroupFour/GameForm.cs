@@ -118,9 +118,10 @@ namespace ConnectFour_GroupFour
 
                     //this is just for testing purposes, when game is more fleshed out there
                     //will be more checks involved before placing a piece
-                    //GC: added a visual so we can tell at a glance when a piece occupies a cell, images to be added later
+                    //added a visual so we can tell at a glance when a piece occupies a cell, images to be added later
                     if (!c.GetCellContainPiece())
-                    {//If cell does not contain a piece
+                    {
+                        //If cell does not contain a piece
                         gameBoard.addPiece(c.GetCol(), currentPlayer);
                         //switches between player turns after placing a piece
                         if(currentPlayer == 1)
@@ -150,6 +151,54 @@ namespace ConnectFour_GroupFour
                 }
             }
         }
+        //show player move when the mouse hovers over a cell
+        private void CellButtonHover(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            bool hover = true;
+
+            //get the board
+            Cell[,] board = gameBoard.GetGameBoard();
+
+            //cycle through each cell in the board and write the row and col in console as a test
+            foreach (Cell c in board)
+            {
+                Button boardButton = c.GetButton();
+
+                if (boardButton.Name == button.Name)
+                {
+                    Console.WriteLine("HOVER -  ROW: " + c.GetRow() + "    COL: " + c.GetCol());
+
+                    if (!c.GetCellContainPiece())
+                    {
+                        //If cell does not contain a piece
+                        gameBoard.showMove(c.GetCol(), currentPlayer, hover);
+                    }
+                }
+            }
+        }
+        //reset cell color when mouse is no longer hovering
+        private void CellButtonLeave(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            bool hover = false;
+
+            //get the board
+            Cell[,] board = gameBoard.GetGameBoard();
+
+            //cycle through each cell in the board and write the row and col in console as a test
+            foreach (Cell c in board)
+            {
+                Button boardButton = c.GetButton();
+
+                if (boardButton.Name == button.Name)
+                {
+                    Console.WriteLine("LEAVE - ROW: " + c.GetRow() + "    COL: " + c.GetCol());
+                    gameBoard.showMove(c.GetCol(), currentPlayer, hover);
+                }
+            }
+        }
+
         private void GameForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             //calls the close form function to close the application
