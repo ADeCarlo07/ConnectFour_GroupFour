@@ -181,5 +181,10 @@ namespace ConnectFour_GroupFour
                 }
             }
         }
+
+        public int getGameMode(int gameMode)
+        {// 1 = vs AI, 2 = 2p
+            return gameMode;
+        }
     }
 }
