@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,6 +31,9 @@ namespace ConnectFour_GroupFour
             //this.StartPosition = FormStartPosition.Manual;
             //this.Top = 0;
             //this.RightToLeft = 0;
+
+
+   
         }
 
         public GameForm(StartForm sf, int mode)
@@ -43,6 +47,110 @@ namespace ConnectFour_GroupFour
             //global variable of the start form so it can be referenced
             sform = sf;
             gameMode = mode;
+        }
+
+
+        //so we can read info from the text file to properly update it
+        private int[] ReadFromTextFile()
+        {
+            int[] vals = new int[4];
+            try
+            {
+                String[] lines = File.ReadAllLines(@"C:\Users\allis\OneDrive\Desktop\CIS153\Homework\ConnectFour_GroupFour\ConnectFour_GroupFour\Stats.txt");
+                List<String> l = lines.ToList();
+
+                try
+                {
+                    foreach (String line in l)
+                    {
+                        if (line == "")
+                        {
+                            l.Remove(line);
+                        }
+                    }
+                }
+                catch
+                {
+                    Console.WriteLine("ERROR! Txt file has a manual error of two empty lines.");
+                }
+
+                foreach (String line in l)
+                {
+                    Console.WriteLine(line);
+                }
+
+                vals[0] = int.Parse(l[0]);
+                vals[1] = int.Parse(l[1]);
+                vals[2] = int.Parse(l[2]);
+                vals[3] = int.Parse(l[0]) + int.Parse(l[1]) + int.Parse(l[2]);
+
+            }
+            catch (IOException e)
+            {
+                Console.WriteLine("The file could not be read:");
+                Console.WriteLine(e.Message);
+            }
+
+            return vals;
+        }
+
+        //for when we need to update info in stats file
+        //how to call:
+        //if gameState == 1 then AI won
+        //if gameState == 2 then Player won
+        //if gameState == 0 then it was a draw
+        private void UpdateTextFile(int gameState)
+        {
+            int[] vals = ReadFromTextFile();
+            String[] lines = File.ReadAllLines(@"C:\Users\allis\OneDrive\Desktop\CIS153\Homework\ConnectFour_GroupFour\ConnectFour_GroupFour\Stats.txt");
+            List<String> l = lines.ToList();
+            String text = "";
+
+
+            foreach (String line in l)
+            {
+                if (line == "")
+                {
+                    l.Remove(line);
+                }
+            }
+
+            if (gameState == 1)
+            {
+                int updatedAIWins = vals[0] + 1;
+                Console.WriteLine("Updated AI wins: " + updatedAIWins);
+                l[0] = updatedAIWins.ToString();
+                l[1] = vals[1].ToString();
+                l[2] = vals[2].ToString();
+            }
+            else if (gameState == 2)
+            {
+                int updatedPlayerWins = vals[1] + 1;
+                Console.WriteLine("Updated Player wins: " + updatedPlayerWins);
+                l[0] = vals[0].ToString();
+                l[1] = updatedPlayerWins.ToString();
+                l[2] = vals[2].ToString();
+            }
+            else if (gameState == 0)
+            {
+                int updatedDraws = vals[2] + 1;
+                Console.WriteLine("Updated draws: " + updatedDraws);
+                l[0] = vals[0].ToString();
+                l[1] = vals[1].ToString();
+                l[2] = updatedDraws.ToString();
+            }
+
+            for (int i = 0; i < l.Count; i++)
+            {
+                text += l[i] + "\n";
+            }
+
+            //test
+            Console.WriteLine(text);
+
+            //overwrite text file
+            File.WriteAllText(@"C:\Users\allis\OneDrive\Desktop\CIS153\Homework\ConnectFour_GroupFour\ConnectFour_GroupFour\Stats.txt", text);
+
         }
 
         private void InitializeBoard()

@@ -79,5 +79,13 @@ namespace ConnectFour_GroupFour
             lbl_credits.ForeColor = Color.Black;
             lbl_credits.Font = new Font(lbl_credits.Font, FontStyle.Regular);
         }
+
+        private void btn_stats_Click(object sender, EventArgs e)
+        {
+            StatsForm sf = new StatsForm(this);
+
+            sf.Show();
+            this.Hide();
+        }
     }
 }
