@@ -15,6 +15,7 @@ namespace ConnectFour_GroupFour
     public partial class GameForm : Form
     {
         StartForm startForm;
+        StatsForm statsForm;
         private Board gameBoard;
         int currentPlayer = 1; //player 1 starts(red)
         int gameMode; //1 = single player, 2 = 2 players
@@ -389,6 +390,14 @@ namespace ConnectFour_GroupFour
         public int getGameMode(int gameMode)
         {// 1 = vs AI, 2 = 2p
             return gameMode;
+        }
+
+        private void AfterGameTest_Click(object sender, EventArgs e)
+        {
+            StatsForm sf = new StatsForm(startForm, this);
+
+            sf.Show();
+            this.Hide();
         }
     }
 }

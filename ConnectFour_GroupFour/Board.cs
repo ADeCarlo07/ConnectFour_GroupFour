@@ -147,6 +147,7 @@ namespace ConnectFour_GroupFour
                     pieceDangerScore[3, i] += ScanCellUpRight(ColHeight[i] - 2, i + 1, 1);
             }
             // debug log
+            //bool wincheck = false; //for opening the stats after game //nvm
             for (int i =0; i < 7; i++)
             {
                 for (int j = 0; j < 4; j++)
@@ -154,6 +155,7 @@ namespace ConnectFour_GroupFour
                     if (pieceConnectionScore[j, i] >= 3)
                     {
                         Console.WriteLine("I see a WIN!" + " @Col: " + i + "& Type:" + j + " score: " + pieceConnectionScore[j, i]);
+                        //wincheck = true;
                     }
                     if (pieceBlockScore[j, i] >= 3)
                     {
@@ -165,6 +167,7 @@ namespace ConnectFour_GroupFour
                     }
                 }
             }
+            //return wincheck;
         }
         // recursive cell scanners
         // give them a cell to start at if the cell matches its' called again, 1 = RED player 2 = YELLOW ai

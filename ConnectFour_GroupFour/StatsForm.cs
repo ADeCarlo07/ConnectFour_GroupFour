@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -14,6 +15,7 @@ namespace ConnectFour_GroupFour
     public partial class StatsForm : Form
     {
         private StartForm startForm;
+        private GameForm gameForm;
         private int aiWins;
         private int player1Wins;
         private int player2Wins;
@@ -26,7 +28,7 @@ namespace ConnectFour_GroupFour
             InitDummyData();
         }
 
-        public StatsForm(StartForm sf)
+        public StatsForm(StartForm sf) //if stats was entered from the menu
         {
             InitializeComponent();
             startForm = sf;
@@ -35,9 +37,49 @@ namespace ConnectFour_GroupFour
             ReadFromTextFile();
             InitChart();
 
+            ReviewButton.Enabled = false;
+            ReviewButton.Visible = false;
+            PlayAgainButton.Enabled = false;
+            PlayAgainButton.Visible = false;
+            WinText.Visible = false;
+
             UpdateLabels();
         }
+        public StatsForm(StartForm sf, GameForm gf)  //if stats was entered automatically after a game
+        {
+            InitializeComponent();
+            startForm = sf;
+            gameForm = gf;
 
+            InitDummyData();
+            ReadFromTextFile();
+            InitChart();
+            //review and play again buttons are only accessible after a game
+            ReviewButton.Enabled = true;
+            ReviewButton.Visible = true;
+            PlayAgainButton.Enabled = true;
+            PlayAgainButton.Visible = true;
+
+            UpdateLabels();
+            WinText.Visible = true;
+            WinText.Text = "You win!!!"; //doesnt tell you the winner yet
+            //doesnt work vvvvvvvvvv
+            //int e = 1;
+            //while (e < 5)
+            //{
+            //    e = e + 1;
+            //    for (int i = 0; i < 10; i++) {
+            //        Thread.Sleep(100);
+            //        WinText.Font = new Font(WinText.Font.FontFamily, 12 + i);
+            //    }
+            //    for (int i = 0; i < 10; i++)
+            //    {
+            //        Thread.Sleep(100);
+            //        WinText.Font = new Font(WinText.Font.FontFamily, 22 - i);
+            //    }
+            //}
+
+        }
         private void btn_menu_Click(object sender, EventArgs e)
         {
             startForm.Show();
@@ -50,7 +92,7 @@ namespace ConnectFour_GroupFour
             startForm.closeAll();
         }
 
-        private void exitProgram (object sender, EventArgs e)
+        private void exitProgram(object sender, EventArgs e)
         {
             startForm.closeAll();
         }
@@ -148,7 +190,7 @@ namespace ConnectFour_GroupFour
         public void UpdateStats(int winner)
         {
             StreamWriter file = new StreamWriter("../../Resources/Stats.txt");
-            
+
             //draws
             if (winner == 0)
             {
@@ -262,6 +304,18 @@ namespace ConnectFour_GroupFour
             lbl_stats_player1WinPerc.Text = player1WinPerc.ToString("0.00") + "%";
             lbl_stats_player2WinPerc.Text = player2WinPerc.ToString("0.00") + "%";
             lbl_stats_totalGames.Text = totalGames.ToString();
+        }
+        //play again, only accessible after a game
+        private void PlayAgainButton_Click(object sender, EventArgs e) 
+        {
+            this.Hide();
+            startForm.loadBoard(1);
+        }
+        //review, only accessible after a game. only sends you back to the game for now
+        private void ReviewButton_Click(object sender, EventArgs e) 
+        {
+            this.Hide();
+            startForm.loadBoard(1);
         }
     }
 }
