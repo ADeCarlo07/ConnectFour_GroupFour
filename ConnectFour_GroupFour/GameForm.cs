@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,29 +14,17 @@ namespace ConnectFour_GroupFour
 {
     public partial class GameForm : Form
     {
-        StartForm sform;
+        StartForm startForm;
         private Board gameBoard;
         int currentPlayer = 1; //player 1 starts(red)
         int gameMode; //1 = single player, 2 = 2 players
+
         public GameForm()
         {
             InitializeComponent();
-            gameBoard = new Board();
-            InitializeBoard();
-
-            UpdateTurnLabel();
-
-            //Form is loaded to the center of the screen
-            this.StartPosition = FormStartPosition.CenterScreen;
-            //Below if we want to manual position the form to the top left as the directions mentioned
-            //this.StartPosition = FormStartPosition.Manual;
-            //this.Top = 0;
-            //this.RightToLeft = 0;
-
-
-   
         }
 
+        //realized that only this overloaded constructor was being called when this form loads
         public GameForm(StartForm sf, int mode)
         {
             InitializeComponent();
@@ -43,20 +32,37 @@ namespace ConnectFour_GroupFour
             //added because error kept displaying saying gameBoard was null
             gameBoard = new Board();
             InitializeBoard();
+            UpdateTurnLabel();
 
             //global variable of the start form so it can be referenced
-            sform = sf;
+            startForm = sf;
             gameMode = mode;
         }
 
+        private void GameForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            //calls the close form function to close the application
+            startForm.closeAll();
+        }
+
+        private void exitProgram (object sender, EventArgs e)
+        {
+            startForm.closeAll();
+        }
+
+        private void btn_menu_Click(object sender, EventArgs e)
+        {
+            startForm.Show();
+            this.Hide();
+        }
 
         //so we can read info from the text file to properly update it
         private int[] ReadFromTextFile()
         {
-            int[] vals = new int[4];
+            int[] vals = new int[5];
             try
             {
-                String[] lines = File.ReadAllLines(@"C:\Users\allis\OneDrive\Desktop\CIS153\Homework\ConnectFour_GroupFour\ConnectFour_GroupFour\Stats.txt");
+                String[] lines = File.ReadAllLines("../../Resources/Stats.txt");
                 List<String> l = lines.ToList();
 
                 try
@@ -82,7 +88,8 @@ namespace ConnectFour_GroupFour
                 vals[0] = int.Parse(l[0]);
                 vals[1] = int.Parse(l[1]);
                 vals[2] = int.Parse(l[2]);
-                vals[3] = int.Parse(l[0]) + int.Parse(l[1]) + int.Parse(l[2]);
+                vals[3] = int.Parse(l[3]);
+                vals[4] = int.Parse(l[0]) + int.Parse(l[1]) + int.Parse(l[2]) + int.Parse(l[3]);
 
             }
             catch (IOException e)
@@ -97,14 +104,59 @@ namespace ConnectFour_GroupFour
         //for when we need to update info in stats file
         //how to call:
         //if gameState == 1 then AI won
-        //if gameState == 2 then Player won
+        //if gameState == 2 then Player 1 won
+        //if gameState == 3 then Player 2 won
         //if gameState == 0 then it was a draw
         private void UpdateTextFile(int gameState)
         {
             int[] vals = ReadFromTextFile();
-            String[] lines = File.ReadAllLines(@"C:\Users\allis\OneDrive\Desktop\CIS153\Homework\ConnectFour_GroupFour\ConnectFour_GroupFour\Stats.txt");
+            String[] lines = File.ReadAllLines("../../Resources/Stats.txt");
             List<String> l = lines.ToList();
             String text = "";
+
+
+            //below is an alternate method of updating the values,
+            //Clears the text file then adds the updated values
+            //we would call this at the function at the end of each game
+
+            //StreamWriter file = new StreamWriter("../../Resources/Stats.txt");
+
+            ////draws
+            //if (gameState == 0)
+            //{
+            //    vals[0] += 1;
+            //    Console.WriteLine("Updated draws: " + vals[0].ToString());
+            //}
+            ////ai wins
+            //if (gameState == 1)
+            //{
+            //    vals[1] += 1;
+            //    Console.WriteLine("Updated AI wins: " + vals[1].ToString());
+            //}
+            ////player 1 wins
+            //if (gameState == 2)
+            //{
+            //    vals[2] += 1;
+            //    Console.WriteLine("Updated Player 1 wins: " + vals[2].ToString());
+            //}
+            ////player 2 wins
+            //else
+            //{
+            //    vals[3] += 1;
+            //    Console.WriteLine("Updated Player 2 wins: " + vals[3].ToString());
+            //}
+
+            //vals[4] = vals[0] + vals[1] + vals[2] + vals[3];
+
+            ////the whole text file is cleared and then replaced with updated stats
+            //using (StreamWriter writer = file)
+            //{
+            //    writer.WriteLine(vals[0].ToString());
+            //    writer.WriteLine(vals[1].ToString());
+            //    writer.WriteLine(vals[2].ToString());
+            //    writer.WriteLine(vals[3].ToString());
+            //    writer.WriteLine(vals[4].ToString());
+            //}
 
 
             foreach (String line in l)
@@ -149,7 +201,7 @@ namespace ConnectFour_GroupFour
             Console.WriteLine(text);
 
             //overwrite text file
-            File.WriteAllText(@"C:\Users\allis\OneDrive\Desktop\CIS153\Homework\ConnectFour_GroupFour\ConnectFour_GroupFour\Stats.txt", text);
+            File.WriteAllText("../../Resources/Stats.txt", text);
 
         }
 
@@ -275,7 +327,7 @@ namespace ConnectFour_GroupFour
 
                 if (boardButton.Name == button.Name)
                 {
-                    Console.WriteLine("HOVER -  ROW: " + c.GetRow() + "    COL: " + c.GetCol());
+                    //Console.WriteLine("HOVER -  ROW: " + c.GetRow() + "    COL: " + c.GetCol());
 
                     if (!c.GetCellContainPiece())
                     {
@@ -301,17 +353,12 @@ namespace ConnectFour_GroupFour
 
                 if (boardButton.Name == button.Name)
                 {
-                    Console.WriteLine("LEAVE - ROW: " + c.GetRow() + "    COL: " + c.GetCol());
+                    //Console.WriteLine("LEAVE - ROW: " + c.GetRow() + "    COL: " + c.GetCol());
                     gameBoard.showMove(c.GetCol(), currentPlayer, hover);
                 }
             }
         }
 
-        private void GameForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            //calls the close form function to close the application
-            sform.closeForms();
-        }
         //explicitly states whose turn it is and changes once a piece is added
         private void UpdateTurnLabel()
         {

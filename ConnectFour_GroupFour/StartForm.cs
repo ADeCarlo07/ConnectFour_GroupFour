@@ -16,14 +16,6 @@ namespace ConnectFour_GroupFour
         public StartForm()
         {
             InitializeComponent();
-            
-            //Form is loaded to the center of the screen
-            this.StartPosition = FormStartPosition.CenterScreen;
-
-            //Below if we want to manual position the form to the top left as the directions mentioned
-            //this.StartPosition = FormStartPosition.Manual;
-            //this.Top = 0;
-            //this.RightToLeft = 0;
         }
         
         public void loadBoard(int p)
@@ -42,16 +34,16 @@ namespace ConnectFour_GroupFour
         //maybe we can consolidate clicking exit and clicking close?
         private void btn_exit_Click(object sender, EventArgs e)
         {
-            closeForms();
+            closeAll();
         }
         private void StartForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            closeForms();
+            closeAll();
         }
 
         //function call to close the entire application
         //made public so other forms can reference
-        public void closeForms()
+        public void closeAll()
         {
             Application.Exit();
         }
@@ -78,8 +70,21 @@ namespace ConnectFour_GroupFour
         {
             lbl_credits.ForeColor = Color.Black;
             lbl_credits.Font = new Font(lbl_credits.Font, FontStyle.Regular);
+            list_credits.Visible = false;
+            list_credits.Items.Clear();
         }
-
+        private void lbl_credits_Click(object sender, EventArgs e)
+        {
+            if (!list_credits.Visible)
+            {
+                list_credits.Visible = true;
+                list_credits.Items.Add("Cuadra, Giovanni");
+                list_credits.Items.Add("Decarlo, Allison");
+                list_credits.Items.Add("Kleinow, Layla");
+                list_credits.Items.Add("Miles, Julian");
+                list_credits.Items.Add("Wright, Elijah");
+            }
+        }
         private void btn_stats_Click(object sender, EventArgs e)
         {
             StatsForm sf = new StatsForm(this);
@@ -87,5 +92,7 @@ namespace ConnectFour_GroupFour
             sf.Show();
             this.Hide();
         }
+
+
     }
 }

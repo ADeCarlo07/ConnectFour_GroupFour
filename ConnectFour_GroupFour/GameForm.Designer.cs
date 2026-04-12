@@ -71,6 +71,9 @@
             this.cell_4_6 = new System.Windows.Forms.Button();
             this.cell_5_6 = new System.Windows.Forms.Button();
             this.lbl_turn = new System.Windows.Forms.Label();
+            this.btn_exit = new System.Windows.Forms.Button();
+            this.btn_menu = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // cell_5_0
@@ -78,7 +81,7 @@
             this.cell_5_0.BackColor = System.Drawing.Color.White;
             this.cell_5_0.FlatAppearance.BorderSize = 0;
             this.cell_5_0.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cell_5_0.Location = new System.Drawing.Point(345, 714);
+            this.cell_5_0.Location = new System.Drawing.Point(348, 674);
             this.cell_5_0.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cell_5_0.Name = "cell_5_0";
             this.cell_5_0.Size = new System.Drawing.Size(117, 109);
@@ -93,7 +96,7 @@
             this.cell_4_0.BackColor = System.Drawing.Color.White;
             this.cell_4_0.FlatAppearance.BorderSize = 0;
             this.cell_4_0.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cell_4_0.Location = new System.Drawing.Point(345, 596);
+            this.cell_4_0.Location = new System.Drawing.Point(348, 556);
             this.cell_4_0.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cell_4_0.Name = "cell_4_0";
             this.cell_4_0.Size = new System.Drawing.Size(117, 109);
@@ -108,7 +111,7 @@
             this.cell_3_0.BackColor = System.Drawing.Color.White;
             this.cell_3_0.FlatAppearance.BorderSize = 0;
             this.cell_3_0.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cell_3_0.Location = new System.Drawing.Point(345, 480);
+            this.cell_3_0.Location = new System.Drawing.Point(348, 440);
             this.cell_3_0.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cell_3_0.Name = "cell_3_0";
             this.cell_3_0.Size = new System.Drawing.Size(117, 109);
@@ -123,7 +126,7 @@
             this.cell_2_0.BackColor = System.Drawing.Color.White;
             this.cell_2_0.FlatAppearance.BorderSize = 0;
             this.cell_2_0.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cell_2_0.Location = new System.Drawing.Point(345, 362);
+            this.cell_2_0.Location = new System.Drawing.Point(348, 322);
             this.cell_2_0.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cell_2_0.Name = "cell_2_0";
             this.cell_2_0.Size = new System.Drawing.Size(117, 109);
@@ -138,7 +141,7 @@
             this.cell_1_0.BackColor = System.Drawing.Color.White;
             this.cell_1_0.FlatAppearance.BorderSize = 0;
             this.cell_1_0.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cell_1_0.Location = new System.Drawing.Point(345, 245);
+            this.cell_1_0.Location = new System.Drawing.Point(348, 205);
             this.cell_1_0.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cell_1_0.Name = "cell_1_0";
             this.cell_1_0.Size = new System.Drawing.Size(117, 109);
@@ -153,7 +156,7 @@
             this.cell_0_0.BackColor = System.Drawing.Color.White;
             this.cell_0_0.FlatAppearance.BorderSize = 0;
             this.cell_0_0.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cell_0_0.Location = new System.Drawing.Point(345, 129);
+            this.cell_0_0.Location = new System.Drawing.Point(348, 89);
             this.cell_0_0.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cell_0_0.Name = "cell_0_0";
             this.cell_0_0.Size = new System.Drawing.Size(117, 109);
@@ -168,7 +171,7 @@
             this.cell_0_1.BackColor = System.Drawing.Color.White;
             this.cell_0_1.FlatAppearance.BorderSize = 0;
             this.cell_0_1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cell_0_1.Location = new System.Drawing.Point(471, 129);
+            this.cell_0_1.Location = new System.Drawing.Point(474, 89);
             this.cell_0_1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cell_0_1.Name = "cell_0_1";
             this.cell_0_1.Size = new System.Drawing.Size(117, 109);
@@ -183,7 +186,7 @@
             this.cell_1_1.BackColor = System.Drawing.Color.White;
             this.cell_1_1.FlatAppearance.BorderSize = 0;
             this.cell_1_1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cell_1_1.Location = new System.Drawing.Point(471, 245);
+            this.cell_1_1.Location = new System.Drawing.Point(474, 205);
             this.cell_1_1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cell_1_1.Name = "cell_1_1";
             this.cell_1_1.Size = new System.Drawing.Size(117, 109);
@@ -198,7 +201,7 @@
             this.cell_2_1.BackColor = System.Drawing.Color.White;
             this.cell_2_1.FlatAppearance.BorderSize = 0;
             this.cell_2_1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cell_2_1.Location = new System.Drawing.Point(471, 362);
+            this.cell_2_1.Location = new System.Drawing.Point(474, 322);
             this.cell_2_1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cell_2_1.Name = "cell_2_1";
             this.cell_2_1.Size = new System.Drawing.Size(117, 109);
@@ -213,7 +216,7 @@
             this.cell_3_1.BackColor = System.Drawing.Color.White;
             this.cell_3_1.FlatAppearance.BorderSize = 0;
             this.cell_3_1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cell_3_1.Location = new System.Drawing.Point(471, 480);
+            this.cell_3_1.Location = new System.Drawing.Point(474, 440);
             this.cell_3_1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cell_3_1.Name = "cell_3_1";
             this.cell_3_1.Size = new System.Drawing.Size(117, 109);
@@ -228,7 +231,7 @@
             this.cell_4_1.BackColor = System.Drawing.Color.White;
             this.cell_4_1.FlatAppearance.BorderSize = 0;
             this.cell_4_1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cell_4_1.Location = new System.Drawing.Point(471, 596);
+            this.cell_4_1.Location = new System.Drawing.Point(474, 556);
             this.cell_4_1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cell_4_1.Name = "cell_4_1";
             this.cell_4_1.Size = new System.Drawing.Size(117, 109);
@@ -243,7 +246,7 @@
             this.cell_5_1.BackColor = System.Drawing.Color.White;
             this.cell_5_1.FlatAppearance.BorderSize = 0;
             this.cell_5_1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cell_5_1.Location = new System.Drawing.Point(471, 714);
+            this.cell_5_1.Location = new System.Drawing.Point(474, 674);
             this.cell_5_1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cell_5_1.Name = "cell_5_1";
             this.cell_5_1.Size = new System.Drawing.Size(117, 109);
@@ -258,7 +261,7 @@
             this.cell_0_2.BackColor = System.Drawing.Color.White;
             this.cell_0_2.FlatAppearance.BorderSize = 0;
             this.cell_0_2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cell_0_2.Location = new System.Drawing.Point(597, 129);
+            this.cell_0_2.Location = new System.Drawing.Point(600, 89);
             this.cell_0_2.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cell_0_2.Name = "cell_0_2";
             this.cell_0_2.Size = new System.Drawing.Size(117, 109);
@@ -273,7 +276,7 @@
             this.cell_1_2.BackColor = System.Drawing.Color.White;
             this.cell_1_2.FlatAppearance.BorderSize = 0;
             this.cell_1_2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cell_1_2.Location = new System.Drawing.Point(597, 245);
+            this.cell_1_2.Location = new System.Drawing.Point(600, 205);
             this.cell_1_2.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cell_1_2.Name = "cell_1_2";
             this.cell_1_2.Size = new System.Drawing.Size(117, 109);
@@ -288,7 +291,7 @@
             this.cell_2_2.BackColor = System.Drawing.Color.White;
             this.cell_2_2.FlatAppearance.BorderSize = 0;
             this.cell_2_2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cell_2_2.Location = new System.Drawing.Point(597, 362);
+            this.cell_2_2.Location = new System.Drawing.Point(600, 322);
             this.cell_2_2.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cell_2_2.Name = "cell_2_2";
             this.cell_2_2.Size = new System.Drawing.Size(117, 109);
@@ -303,7 +306,7 @@
             this.cell_3_2.BackColor = System.Drawing.Color.White;
             this.cell_3_2.FlatAppearance.BorderSize = 0;
             this.cell_3_2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cell_3_2.Location = new System.Drawing.Point(597, 480);
+            this.cell_3_2.Location = new System.Drawing.Point(600, 440);
             this.cell_3_2.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cell_3_2.Name = "cell_3_2";
             this.cell_3_2.Size = new System.Drawing.Size(117, 109);
@@ -318,7 +321,7 @@
             this.cell_4_2.BackColor = System.Drawing.Color.White;
             this.cell_4_2.FlatAppearance.BorderSize = 0;
             this.cell_4_2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cell_4_2.Location = new System.Drawing.Point(597, 596);
+            this.cell_4_2.Location = new System.Drawing.Point(600, 556);
             this.cell_4_2.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cell_4_2.Name = "cell_4_2";
             this.cell_4_2.Size = new System.Drawing.Size(117, 109);
@@ -333,7 +336,7 @@
             this.cell_5_2.BackColor = System.Drawing.Color.White;
             this.cell_5_2.FlatAppearance.BorderSize = 0;
             this.cell_5_2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cell_5_2.Location = new System.Drawing.Point(597, 714);
+            this.cell_5_2.Location = new System.Drawing.Point(600, 674);
             this.cell_5_2.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cell_5_2.Name = "cell_5_2";
             this.cell_5_2.Size = new System.Drawing.Size(117, 109);
@@ -348,7 +351,7 @@
             this.cell_0_3.BackColor = System.Drawing.Color.White;
             this.cell_0_3.FlatAppearance.BorderSize = 0;
             this.cell_0_3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cell_0_3.Location = new System.Drawing.Point(723, 129);
+            this.cell_0_3.Location = new System.Drawing.Point(726, 89);
             this.cell_0_3.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cell_0_3.Name = "cell_0_3";
             this.cell_0_3.Size = new System.Drawing.Size(117, 109);
@@ -363,7 +366,7 @@
             this.cell_1_3.BackColor = System.Drawing.Color.White;
             this.cell_1_3.FlatAppearance.BorderSize = 0;
             this.cell_1_3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cell_1_3.Location = new System.Drawing.Point(723, 245);
+            this.cell_1_3.Location = new System.Drawing.Point(726, 205);
             this.cell_1_3.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cell_1_3.Name = "cell_1_3";
             this.cell_1_3.Size = new System.Drawing.Size(117, 109);
@@ -378,7 +381,7 @@
             this.cell_2_3.BackColor = System.Drawing.Color.White;
             this.cell_2_3.FlatAppearance.BorderSize = 0;
             this.cell_2_3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cell_2_3.Location = new System.Drawing.Point(723, 362);
+            this.cell_2_3.Location = new System.Drawing.Point(726, 322);
             this.cell_2_3.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cell_2_3.Name = "cell_2_3";
             this.cell_2_3.Size = new System.Drawing.Size(117, 109);
@@ -393,7 +396,7 @@
             this.cell_3_3.BackColor = System.Drawing.Color.White;
             this.cell_3_3.FlatAppearance.BorderSize = 0;
             this.cell_3_3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cell_3_3.Location = new System.Drawing.Point(723, 480);
+            this.cell_3_3.Location = new System.Drawing.Point(726, 440);
             this.cell_3_3.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cell_3_3.Name = "cell_3_3";
             this.cell_3_3.Size = new System.Drawing.Size(117, 109);
@@ -408,7 +411,7 @@
             this.cell_4_3.BackColor = System.Drawing.Color.White;
             this.cell_4_3.FlatAppearance.BorderSize = 0;
             this.cell_4_3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cell_4_3.Location = new System.Drawing.Point(723, 596);
+            this.cell_4_3.Location = new System.Drawing.Point(726, 556);
             this.cell_4_3.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cell_4_3.Name = "cell_4_3";
             this.cell_4_3.Size = new System.Drawing.Size(117, 109);
@@ -423,7 +426,7 @@
             this.cell_5_3.BackColor = System.Drawing.Color.White;
             this.cell_5_3.FlatAppearance.BorderSize = 0;
             this.cell_5_3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cell_5_3.Location = new System.Drawing.Point(723, 714);
+            this.cell_5_3.Location = new System.Drawing.Point(726, 674);
             this.cell_5_3.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cell_5_3.Name = "cell_5_3";
             this.cell_5_3.Size = new System.Drawing.Size(117, 109);
@@ -438,7 +441,7 @@
             this.cell_0_4.BackColor = System.Drawing.Color.White;
             this.cell_0_4.FlatAppearance.BorderSize = 0;
             this.cell_0_4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cell_0_4.Location = new System.Drawing.Point(849, 129);
+            this.cell_0_4.Location = new System.Drawing.Point(852, 89);
             this.cell_0_4.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cell_0_4.Name = "cell_0_4";
             this.cell_0_4.Size = new System.Drawing.Size(117, 109);
@@ -453,7 +456,7 @@
             this.cell_1_4.BackColor = System.Drawing.Color.White;
             this.cell_1_4.FlatAppearance.BorderSize = 0;
             this.cell_1_4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cell_1_4.Location = new System.Drawing.Point(849, 245);
+            this.cell_1_4.Location = new System.Drawing.Point(852, 205);
             this.cell_1_4.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cell_1_4.Name = "cell_1_4";
             this.cell_1_4.Size = new System.Drawing.Size(117, 109);
@@ -468,7 +471,7 @@
             this.cell_2_4.BackColor = System.Drawing.Color.White;
             this.cell_2_4.FlatAppearance.BorderSize = 0;
             this.cell_2_4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cell_2_4.Location = new System.Drawing.Point(849, 362);
+            this.cell_2_4.Location = new System.Drawing.Point(852, 322);
             this.cell_2_4.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cell_2_4.Name = "cell_2_4";
             this.cell_2_4.Size = new System.Drawing.Size(117, 109);
@@ -483,7 +486,7 @@
             this.cell_3_4.BackColor = System.Drawing.Color.White;
             this.cell_3_4.FlatAppearance.BorderSize = 0;
             this.cell_3_4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cell_3_4.Location = new System.Drawing.Point(849, 480);
+            this.cell_3_4.Location = new System.Drawing.Point(852, 440);
             this.cell_3_4.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cell_3_4.Name = "cell_3_4";
             this.cell_3_4.Size = new System.Drawing.Size(117, 109);
@@ -498,7 +501,7 @@
             this.cell_4_4.BackColor = System.Drawing.Color.White;
             this.cell_4_4.FlatAppearance.BorderSize = 0;
             this.cell_4_4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cell_4_4.Location = new System.Drawing.Point(849, 596);
+            this.cell_4_4.Location = new System.Drawing.Point(852, 556);
             this.cell_4_4.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cell_4_4.Name = "cell_4_4";
             this.cell_4_4.Size = new System.Drawing.Size(117, 109);
@@ -513,7 +516,7 @@
             this.cell_5_4.BackColor = System.Drawing.Color.White;
             this.cell_5_4.FlatAppearance.BorderSize = 0;
             this.cell_5_4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cell_5_4.Location = new System.Drawing.Point(849, 714);
+            this.cell_5_4.Location = new System.Drawing.Point(852, 674);
             this.cell_5_4.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cell_5_4.Name = "cell_5_4";
             this.cell_5_4.Size = new System.Drawing.Size(117, 109);
@@ -528,7 +531,7 @@
             this.cell_0_5.BackColor = System.Drawing.Color.White;
             this.cell_0_5.FlatAppearance.BorderSize = 0;
             this.cell_0_5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cell_0_5.Location = new System.Drawing.Point(975, 129);
+            this.cell_0_5.Location = new System.Drawing.Point(978, 89);
             this.cell_0_5.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cell_0_5.Name = "cell_0_5";
             this.cell_0_5.Size = new System.Drawing.Size(117, 109);
@@ -543,7 +546,7 @@
             this.cell_1_5.BackColor = System.Drawing.Color.White;
             this.cell_1_5.FlatAppearance.BorderSize = 0;
             this.cell_1_5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cell_1_5.Location = new System.Drawing.Point(975, 245);
+            this.cell_1_5.Location = new System.Drawing.Point(978, 205);
             this.cell_1_5.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cell_1_5.Name = "cell_1_5";
             this.cell_1_5.Size = new System.Drawing.Size(117, 109);
@@ -558,7 +561,7 @@
             this.cell_2_5.BackColor = System.Drawing.Color.White;
             this.cell_2_5.FlatAppearance.BorderSize = 0;
             this.cell_2_5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cell_2_5.Location = new System.Drawing.Point(975, 362);
+            this.cell_2_5.Location = new System.Drawing.Point(978, 322);
             this.cell_2_5.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cell_2_5.Name = "cell_2_5";
             this.cell_2_5.Size = new System.Drawing.Size(117, 109);
@@ -573,7 +576,7 @@
             this.cell_3_5.BackColor = System.Drawing.Color.White;
             this.cell_3_5.FlatAppearance.BorderSize = 0;
             this.cell_3_5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cell_3_5.Location = new System.Drawing.Point(975, 480);
+            this.cell_3_5.Location = new System.Drawing.Point(978, 440);
             this.cell_3_5.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cell_3_5.Name = "cell_3_5";
             this.cell_3_5.Size = new System.Drawing.Size(117, 109);
@@ -588,7 +591,7 @@
             this.cell_4_5.BackColor = System.Drawing.Color.White;
             this.cell_4_5.FlatAppearance.BorderSize = 0;
             this.cell_4_5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cell_4_5.Location = new System.Drawing.Point(975, 596);
+            this.cell_4_5.Location = new System.Drawing.Point(978, 556);
             this.cell_4_5.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cell_4_5.Name = "cell_4_5";
             this.cell_4_5.Size = new System.Drawing.Size(117, 109);
@@ -603,7 +606,7 @@
             this.cell_5_5.BackColor = System.Drawing.Color.White;
             this.cell_5_5.FlatAppearance.BorderSize = 0;
             this.cell_5_5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cell_5_5.Location = new System.Drawing.Point(975, 714);
+            this.cell_5_5.Location = new System.Drawing.Point(978, 674);
             this.cell_5_5.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cell_5_5.Name = "cell_5_5";
             this.cell_5_5.Size = new System.Drawing.Size(117, 109);
@@ -618,7 +621,7 @@
             this.cell_0_6.BackColor = System.Drawing.Color.White;
             this.cell_0_6.FlatAppearance.BorderSize = 0;
             this.cell_0_6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cell_0_6.Location = new System.Drawing.Point(1101, 129);
+            this.cell_0_6.Location = new System.Drawing.Point(1104, 89);
             this.cell_0_6.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cell_0_6.Name = "cell_0_6";
             this.cell_0_6.Size = new System.Drawing.Size(117, 109);
@@ -633,7 +636,7 @@
             this.cell_1_6.BackColor = System.Drawing.Color.White;
             this.cell_1_6.FlatAppearance.BorderSize = 0;
             this.cell_1_6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cell_1_6.Location = new System.Drawing.Point(1101, 245);
+            this.cell_1_6.Location = new System.Drawing.Point(1104, 205);
             this.cell_1_6.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cell_1_6.Name = "cell_1_6";
             this.cell_1_6.Size = new System.Drawing.Size(117, 109);
@@ -648,7 +651,7 @@
             this.cell_2_6.BackColor = System.Drawing.Color.White;
             this.cell_2_6.FlatAppearance.BorderSize = 0;
             this.cell_2_6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cell_2_6.Location = new System.Drawing.Point(1101, 362);
+            this.cell_2_6.Location = new System.Drawing.Point(1104, 322);
             this.cell_2_6.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cell_2_6.Name = "cell_2_6";
             this.cell_2_6.Size = new System.Drawing.Size(117, 109);
@@ -663,7 +666,7 @@
             this.cell_3_6.BackColor = System.Drawing.Color.White;
             this.cell_3_6.FlatAppearance.BorderSize = 0;
             this.cell_3_6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cell_3_6.Location = new System.Drawing.Point(1101, 480);
+            this.cell_3_6.Location = new System.Drawing.Point(1104, 440);
             this.cell_3_6.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cell_3_6.Name = "cell_3_6";
             this.cell_3_6.Size = new System.Drawing.Size(117, 109);
@@ -678,7 +681,7 @@
             this.cell_4_6.BackColor = System.Drawing.Color.White;
             this.cell_4_6.FlatAppearance.BorderSize = 0;
             this.cell_4_6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cell_4_6.Location = new System.Drawing.Point(1101, 596);
+            this.cell_4_6.Location = new System.Drawing.Point(1104, 556);
             this.cell_4_6.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cell_4_6.Name = "cell_4_6";
             this.cell_4_6.Size = new System.Drawing.Size(117, 109);
@@ -693,7 +696,7 @@
             this.cell_5_6.BackColor = System.Drawing.Color.White;
             this.cell_5_6.FlatAppearance.BorderSize = 0;
             this.cell_5_6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cell_5_6.Location = new System.Drawing.Point(1101, 714);
+            this.cell_5_6.Location = new System.Drawing.Point(1104, 674);
             this.cell_5_6.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cell_5_6.Name = "cell_5_6";
             this.cell_5_6.Size = new System.Drawing.Size(117, 109);
@@ -707,7 +710,7 @@
             // 
             this.lbl_turn.AutoSize = true;
             this.lbl_turn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_turn.Location = new System.Drawing.Point(648, 866);
+            this.lbl_turn.Location = new System.Drawing.Point(643, 866);
             this.lbl_turn.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lbl_turn.Name = "lbl_turn";
             this.lbl_turn.Size = new System.Drawing.Size(273, 40);
@@ -715,11 +718,41 @@
             this.lbl_turn.Text = "Player 1\'s Turn";
             this.lbl_turn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // btn_exit
+            // 
+            this.btn_exit.Location = new System.Drawing.Point(1053, 852);
+            this.btn_exit.Name = "btn_exit";
+            this.btn_exit.Size = new System.Drawing.Size(165, 73);
+            this.btn_exit.TabIndex = 43;
+            this.btn_exit.Text = "Exit";
+            this.btn_exit.UseVisualStyleBackColor = true;
+            this.btn_exit.Click += new System.EventHandler(this.exitProgram);
+            // 
+            // btn_menu
+            // 
+            this.btn_menu.Location = new System.Drawing.Point(345, 852);
+            this.btn_menu.Name = "btn_menu";
+            this.btn_menu.Size = new System.Drawing.Size(165, 73);
+            this.btn_menu.TabIndex = 44;
+            this.btn_menu.Text = "Main Menu";
+            this.btn_menu.UseVisualStyleBackColor = true;
+            this.btn_menu.Click += new System.EventHandler(this.btn_menu_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.panel1.Location = new System.Drawing.Point(321, 61);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(929, 748);
+            this.panel1.TabIndex = 45;
+            // 
             // GameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1594, 957);
+            this.ClientSize = new System.Drawing.Size(1594, 966);
+            this.Controls.Add(this.btn_menu);
+            this.Controls.Add(this.btn_exit);
             this.Controls.Add(this.lbl_turn);
             this.Controls.Add(this.cell_0_6);
             this.Controls.Add(this.cell_1_6);
@@ -763,8 +796,11 @@
             this.Controls.Add(this.cell_3_0);
             this.Controls.Add(this.cell_4_0);
             this.Controls.Add(this.cell_5_0);
+            this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.MinimumSize = new System.Drawing.Size(1622, 1045);
             this.Name = "GameForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.GameForm_FormClosed);
             this.ResumeLayout(false);
@@ -817,6 +853,9 @@
         private System.Windows.Forms.Button cell_4_6;
         private System.Windows.Forms.Button cell_5_6;
         private System.Windows.Forms.Label lbl_turn;
+        private System.Windows.Forms.Button btn_exit;
+        private System.Windows.Forms.Button btn_menu;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 
