@@ -61,11 +61,66 @@ namespace ConnectFour_GroupFour.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to 8
+        ///8
+        ///5
+        ///3
+        ///19
+        ///.
         /// </summary>
         internal static string Stats {
             get {
                 return ResourceManager.GetString("Stats", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap tile_empty {
+            get {
+                object obj = ResourceManager.GetObject("tile_empty", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap tile_redPiece {
+            get {
+                object obj = ResourceManager.GetObject("tile_redPiece", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap tile_redPieceTransparent {
+            get {
+                object obj = ResourceManager.GetObject("tile_redPieceTransparent", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap tile_yellowPiece {
+            get {
+                object obj = ResourceManager.GetObject("tile_yellowPiece", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap tile_yellowPieceTransparent {
+            get {
+                object obj = ResourceManager.GetObject("tile_yellowPieceTransparent", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

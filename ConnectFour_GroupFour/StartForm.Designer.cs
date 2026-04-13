@@ -46,18 +46,20 @@
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Yellow;
-            this.label1.Location = new System.Drawing.Point(179, 75);
+            this.label1.Location = new System.Drawing.Point(111, 50);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(405, 71);
+            this.label1.Size = new System.Drawing.Size(277, 48);
             this.label1.TabIndex = 0;
             this.label1.Text = "Connect Four";
             // 
             // btn_sp
             // 
             this.btn_sp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_sp.Location = new System.Drawing.Point(235, 210);
+            this.btn_sp.Location = new System.Drawing.Point(151, 145);
+            this.btn_sp.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_sp.Name = "btn_sp";
-            this.btn_sp.Size = new System.Drawing.Size(296, 86);
+            this.btn_sp.Size = new System.Drawing.Size(190, 59);
             this.btn_sp.TabIndex = 2;
             this.btn_sp.Text = "Single Player";
             this.btn_sp.UseVisualStyleBackColor = true;
@@ -66,9 +68,10 @@
             // btn_tp
             // 
             this.btn_tp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_tp.Location = new System.Drawing.Point(235, 328);
+            this.btn_tp.Location = new System.Drawing.Point(151, 226);
+            this.btn_tp.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_tp.Name = "btn_tp";
-            this.btn_tp.Size = new System.Drawing.Size(296, 86);
+            this.btn_tp.Size = new System.Drawing.Size(190, 59);
             this.btn_tp.TabIndex = 3;
             this.btn_tp.Text = "Two Player";
             this.btn_tp.UseVisualStyleBackColor = true;
@@ -77,9 +80,10 @@
             // btn_stats
             // 
             this.btn_stats.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_stats.Location = new System.Drawing.Point(235, 451);
+            this.btn_stats.Location = new System.Drawing.Point(151, 311);
+            this.btn_stats.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_stats.Name = "btn_stats";
-            this.btn_stats.Size = new System.Drawing.Size(296, 86);
+            this.btn_stats.Size = new System.Drawing.Size(190, 59);
             this.btn_stats.TabIndex = 4;
             this.btn_stats.Text = "Statistics";
             this.btn_stats.UseVisualStyleBackColor = true;
@@ -88,9 +92,10 @@
             // btn_exit
             // 
             this.btn_exit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_exit.Location = new System.Drawing.Point(235, 574);
+            this.btn_exit.Location = new System.Drawing.Point(151, 396);
+            this.btn_exit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_exit.Name = "btn_exit";
-            this.btn_exit.Size = new System.Drawing.Size(296, 86);
+            this.btn_exit.Size = new System.Drawing.Size(190, 59);
             this.btn_exit.TabIndex = 5;
             this.btn_exit.Text = "Exit";
             this.btn_exit.UseVisualStyleBackColor = true;
@@ -99,18 +104,20 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(22, 709);
+            this.label3.Location = new System.Drawing.Point(14, 489);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(222, 29);
+            this.label3.Size = new System.Drawing.Size(148, 20);
             this.label3.TabIndex = 6;
             this.label3.Text = "Created by Group 4";
             // 
             // lbl_credits
             // 
             this.lbl_credits.AutoSize = true;
-            this.lbl_credits.Location = new System.Drawing.Point(688, 709);
+            this.lbl_credits.Location = new System.Drawing.Point(442, 489);
+            this.lbl_credits.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_credits.Name = "lbl_credits";
-            this.lbl_credits.Size = new System.Drawing.Size(90, 29);
+            this.lbl_credits.Size = new System.Drawing.Size(59, 20);
             this.lbl_credits.TabIndex = 7;
             this.lbl_credits.Text = "Credits";
             this.lbl_credits.Click += new System.EventHandler(this.lbl_credits_Click);
@@ -120,27 +127,29 @@
             // list_credits
             // 
             this.list_credits.FormattingEnabled = true;
-            this.list_credits.ItemHeight = 29;
-            this.list_credits.Location = new System.Drawing.Point(576, 531);
+            this.list_credits.ItemHeight = 20;
+            this.list_credits.Location = new System.Drawing.Point(370, 366);
+            this.list_credits.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.list_credits.MultiColumn = true;
             this.list_credits.Name = "list_credits";
-            this.list_credits.Size = new System.Drawing.Size(202, 149);
+            this.list_credits.Size = new System.Drawing.Size(131, 104);
             this.list_credits.TabIndex = 9;
             this.list_credits.Visible = false;
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.panel1.Location = new System.Drawing.Point(214, 188);
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(149)))), ((int)(((byte)(217)))));
+            this.panel1.Location = new System.Drawing.Point(138, 130);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(341, 492);
+            this.panel1.Size = new System.Drawing.Size(219, 339);
             this.panel1.TabIndex = 46;
             // 
             // StartForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 747);
+            this.ClientSize = new System.Drawing.Size(514, 515);
             this.Controls.Add(this.list_credits);
             this.Controls.Add(this.lbl_credits);
             this.Controls.Add(this.label3);
@@ -150,6 +159,7 @@
             this.Controls.Add(this.btn_sp);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "StartForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WelcomeForm";

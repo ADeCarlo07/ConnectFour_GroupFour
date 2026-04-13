@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConnectFour_GroupFour.Properties;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
@@ -45,14 +46,14 @@ namespace ConnectFour_GroupFour
                 //changes colors now, no longer just red
                 if(player == 1)
                 {
-                    gameBoard[ColHeight[col], col].GetButton().BackColor = Color.Red;
+                    gameBoard[ColHeight[col], col].GetButton().BackgroundImage = Resources.tile_redPiece;
                     gameBoard[ColHeight[col], col].SetPieceColor(1);
                     ColHeight[col]--;//tell the board the height change
                     scanBoard();//scan the new board for the ai's turn
                 }
                 else
                 {
-                    gameBoard[ColHeight[col], col].GetButton().BackColor = Color.Yellow;
+                    gameBoard[ColHeight[col], col].GetButton().BackgroundImage = Resources.tile_yellowPiece;
                     gameBoard[ColHeight[col], col].SetPieceColor(2);
                     ColHeight[col]--;//tell the board the height change
                 }
@@ -66,18 +67,18 @@ namespace ConnectFour_GroupFour
                 //once mouse is no longer hovering over the button, changes color back to default
                 if (!hover)
                 {
-                    gameBoard[ColHeight[col], col].GetButton().BackColor = Color.White;
+                    gameBoard[ColHeight[col], col].GetButton().BackgroundImage = Resources.tile_empty;
                 }
                 //when mouse goes over a cell, changes color to indicate move placement
                 else
                 {
                     if (player == 1)
                     {
-                        gameBoard[ColHeight[col], col].GetButton().BackColor = Color.Pink;
+                        gameBoard[ColHeight[col], col].GetButton().BackgroundImage = Resources.tile_redPieceTransparent;
                     }
                     else
                     {
-                        gameBoard[ColHeight[col], col].GetButton().BackColor = Color.LightYellow;
+                        gameBoard[ColHeight[col], col].GetButton().BackgroundImage = Resources.tile_yellowPieceTransparent;
                     }
                 }
             }
