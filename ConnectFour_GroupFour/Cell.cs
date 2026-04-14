@@ -28,6 +28,10 @@ namespace ConnectFour_GroupFour
             row = r;
             col = c;
             btn = button;
+
+            //make sure that empty cell starts with no player
+            pieceColor = 0;
+            containsPiece = false;
         }
 
         public int GetRow()
@@ -78,6 +82,4 @@ namespace ConnectFour_GroupFour
             pieceColor = c;
         }
     }
-
-
 }

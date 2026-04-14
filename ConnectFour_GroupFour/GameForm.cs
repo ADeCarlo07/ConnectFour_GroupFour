@@ -284,6 +284,20 @@ namespace ConnectFour_GroupFour
                     {
                         //If cell does not contain a piece
                         gameBoard.addPiece(c.GetCol(), currentPlayer);
+                        //check for win
+                        int winner = gameBoard.CheckWin();
+
+                        if (winner != 0)
+                        {
+                            EndGame(winner);
+                            return;
+                        }
+                        //check for draw
+                        if(gameBoard.CheckDraw())
+                        {
+                            EndGame(0);
+                            return;
+                        }
                         //switches between player turns after placing a piece
                         if(currentPlayer == 1)
                         {
@@ -390,6 +404,21 @@ namespace ConnectFour_GroupFour
         public int getGameMode(int gameMode)
         {// 1 = vs AI, 2 = 2p
             return gameMode;
+        }
+
+        private void EndGame(int winner)
+        {
+            //winner meanings: 0 = draw, 1 = player 1, 2 = player 2/ AI
+            Console.WriteLine("Game Over. Winner = " + winner);
+            //update stats file
+            UpdateTextFile(winner);
+            //winner screen
+            StatsForm sf = new StatsForm(startForm, this);
+            sf.Show();
+
+            this.Hide();
+
+            return;
         }
 
         private void AfterGameTest_Click(object sender, EventArgs e)

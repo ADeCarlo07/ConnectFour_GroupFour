@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms.VisualStyles;
 
 namespace ConnectFour_GroupFour
 {
@@ -263,7 +264,62 @@ namespace ConnectFour_GroupFour
             //set the row and col of a cell before I add it to the board
             gameBoard[cell.GetRow(), cell.GetCol()] = cell;
         }
+        //Checks the entire board for a winner
+        //returns 0 for no winner, 1 for player 1 (red), and 2 for player 2/ AI (yellow)
+        public int CheckWin()
+        {
+            //loop through every cell on the board
+            for(int r = 0; r < 6; r++)
+            {
+                for (int c = 0; c < 7; c++)
+                {
+                    int player = gameBoard[r, c].GetPieceColor();
 
-
+                    //skip empty cells
+                    if(player == 0)
+                    {
+                        continue;
+                    }
+                    //horizontal check
+                    if(c + 3 < 7 && player == gameBoard[r,c + 1].GetPieceColor() && 
+                        player == gameBoard[r, c + 2].GetPieceColor() && player == gameBoard[r, c + 3].GetPieceColor())
+                    {
+                        return player;
+                    }
+                    //vertical check
+                    if(r + 3 < 6 && player == gameBoard[r + 1, c].GetPieceColor() &&
+                        player == gameBoard[r + 2, c].GetPieceColor() && player == gameBoard[r + 3, c].GetPieceColor())
+                    {
+                        return player;
+                    }
+                    //diagnol down right
+                    if(r + 3 < 6 && c + 3 < 7 && player == gameBoard[r + 1, c + 1].GetPieceColor() &&
+                        player == gameBoard[r + 2, c + 2].GetPieceColor() && player == gameBoard[r + 3, c + 3].GetPieceColor())
+                    {
+                        return player;
+                    }
+                    //diagnol down left
+                    if(r + 3 < 6 && c - 3 >= 0 && player == gameBoard[r + 1, c - 1].GetPieceColor() &&
+                        player == gameBoard[r + 2, c - 2].GetPieceColor() && player == gameBoard[r + 3, c - 3].GetPieceColor())
+                    {
+                        return player;
+                    }
+                }
+            }
+            //no winner found
+            return 0;
+        }
+        //checks if the board is full (draw)
+        public bool CheckDraw()
+        {
+            for(int i = 0; i < numCols; i++)
+            {
+                if (ColHeight[i] >= 0)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
     }
 }
