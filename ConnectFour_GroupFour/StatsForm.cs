@@ -356,7 +356,18 @@ namespace ConnectFour_GroupFour
         {
             this.Hide();
             gameForm.Hide();
-            startForm.loadBoard(1);
+
+            if (gameForm.GetGameMode() == 1)
+            {
+                Console.WriteLine("Reloading Single Player");
+                startForm.loadBoard(1);
+            }
+            else
+            {
+                Console.WriteLine("Reloading Two Player");
+                startForm.loadBoard(2);
+            }
+            
         }
         //review, only accessible after a game. only sends you back to the game for now
         private void ReviewButton_Click(object sender, EventArgs e) 
@@ -367,6 +378,13 @@ namespace ConnectFour_GroupFour
             //only exit and main menu buttons would work ideally
             gameForm.reviewBoardDisp();
             gameForm.Show();
+        }
+
+        private void btn_stats_twoPlayer_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            gameForm.Hide();
+            startForm.loadBoard(2);
         }
     }
 }

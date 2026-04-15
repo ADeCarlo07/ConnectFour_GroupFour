@@ -20,6 +20,8 @@ namespace ConnectFour_GroupFour
         private Board gameBoard;
         int currentPlayer = 1; //player 1 starts(red)
         int gameMode; //1 = single player, 2 = 2 players
+        bool gameOver = false;
+        int modeType;
 
         public GameForm()
         {
@@ -29,6 +31,7 @@ namespace ConnectFour_GroupFour
         //realized that only this overloaded constructor was being called when this form loads
         public GameForm(StartForm sf, int mode)
         {
+            modeType = mode;
             InitializeComponent();
 
             //added because error kept displaying saying gameBoard was null
@@ -43,6 +46,11 @@ namespace ConnectFour_GroupFour
                 gameBoard.setAIActive(true);
             else 
                 gameBoard.setAIActive(false);
+        }
+
+        public int GetGameMode()
+        {
+            return gameMode;
         }
 
         private void GameForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -268,137 +276,149 @@ namespace ConnectFour_GroupFour
         //async allows for use of delays
         private void CellButtonPressed(object sender, EventArgs e)
         {
-            //get the button pressed
-            Button button = (Button)sender;
-
-            //get the board
-            Cell[,] board = gameBoard.GetGameBoard();
-
-            //cycle through each cell in the board and write the row and col in console as a test
-            foreach (Cell c in board)
+            if (!gameOver)
             {
-                Button boardButton = c.GetButton();
+                //get the button pressed
+                Button button = (Button)sender;
 
-                if (boardButton.Name == button.Name)
+                //get the board
+                Cell[,] board = gameBoard.GetGameBoard();
+
+                //cycle through each cell in the board and write the row and col in console as a test
+                foreach (Cell c in board)
                 {
-                    Console.WriteLine("ROW: " + c.GetRow() + "    COL: " + c.GetCol());
+                    Button boardButton = c.GetButton();
 
-                    //this is just for testing purposes, when game is more fleshed out there
-                    //will be more checks involved before placing a piece
-                    //added a visual so we can tell at a glance when a piece occupies a cell, images to be added later
-                    if (!c.GetCellContainPiece())
+                    if (boardButton.Name == button.Name)
                     {
-                        //If cell does not contain a piece
-                        if(gameMode == 1)//if single player its only ever adding red
-                            gameBoard.addPiece(c.GetCol(), 1);
-                        else
-                            gameBoard.addPiece(c.GetCol(), currentPlayer);
-                        //check for win
-                        int winner = gameBoard.CheckWin();
+                        Console.WriteLine("ROW: " + c.GetRow() + "    COL: " + c.GetCol());
 
-                        //Console.WriteLine("Winner: " + winner);
-                        //Console.WriteLine("Current Player: " + currentPlayer);
-
-                        if (winner != 0)
+                        //this is just for testing purposes, when game is more fleshed out there
+                        //will be more checks involved before placing a piece
+                        //added a visual so we can tell at a glance when a piece occupies a cell, images to be added later
+                        if (!c.GetCellContainPiece())
                         {
-                            if (winner == 2 && gameMode == 1)
-                            {
-                                EndGame(winner + 1);
-                            }
+                            //If cell does not contain a piece
+                            if (gameMode == 1)//if single player its only ever adding red
+                                gameBoard.addPiece(c.GetCol(), 1);
+                            else
+                                gameBoard.addPiece(c.GetCol(), currentPlayer);
+                            //check for win
+                            int winner = gameBoard.CheckWin();
 
+                            //Console.WriteLine("Winner: " + winner);
+                            //Console.WriteLine("Current Player: " + currentPlayer);
+
+                            if (winner != 0)
+                            {
+                                if (winner == 2 && gameMode == 1)
+                                {
+                                    EndGame(winner + 1);
+                                }
+
+                                else
+                                {
+                                    EndGame(winner);
+                                }
+
+                                return;
+                            }
+                            //check for draw
+                            if (gameBoard.CheckDraw())
+                            {
+                                EndGame(0);
+                                return;
+                            }
+                            //switches between player turns after placing a piece
+                            if (currentPlayer == 1)
+                            {
+                                currentPlayer = 2;
+                            }
                             else
                             {
-                                EndGame(winner);
+                                currentPlayer = 1;
                             }
-
-                            return;
-                        }
-                        //check for draw
-                        if (gameBoard.CheckDraw())
-                        {
-                            EndGame(0);
-                            return;
-                        }
-                        //switches between player turns after placing a piece
-                        if (currentPlayer == 1)
-                        {
-                            currentPlayer = 2;
+                            //FOR AI LOGIC:
+                            //it would look something like this
+                            //if(gameMode == 1 && currentPlayer == 2)
+                            //{
+                            ////ai algorithm
+                            //}
+                            UpdateTurnLabel();
                         }
                         else
                         {
-                            currentPlayer = 1;
-                        }
-                        //FOR AI LOGIC:
-                        //it would look something like this
-                        //if(gameMode == 1 && currentPlayer == 2)
-                        //{
-                        ////ai algorithm
-                        //}
-                        UpdateTurnLabel();
-                    }
-                    else
-                    {
-                        //testing: when button is pressed for the second time, sets contains piece to false and changes back to white
+                            //testing: when button is pressed for the second time, sets contains piece to false and changes back to white
 
-                        //commented this out, removing tiles is not currently updated in the boards height array
-                        //c.SetCellContainsPiece(false);
-                        //button.BackColor = Color.White;
+                            //commented this out, removing tiles is not currently updated in the boards height array
+                            //c.SetCellContainsPiece(false);
+                            //button.BackColor = Color.White;
+                        }
                     }
                 }
             }
+            
         }
         //show player move when the mouse hovers over a cell
         private void CellButtonHover(object sender, EventArgs e)
         {
-            Button button = (Button)sender;
-            bool hover = true;
-
-            //get the board
-            Cell[,] board = gameBoard.GetGameBoard();
-
-            //cycle through each cell in the board and write the row and col in console as a test
-            foreach (Cell c in board)
+            if (!gameOver)
             {
-                Button boardButton = c.GetButton();
+                Button button = (Button)sender;
+                bool hover = true;
 
-                if (boardButton.Name == button.Name)
+                //get the board
+                Cell[,] board = gameBoard.GetGameBoard();
+
+                //cycle through each cell in the board and write the row and col in console as a test
+                foreach (Cell c in board)
                 {
-                    //Console.WriteLine("HOVER -  ROW: " + c.GetRow() + "    COL: " + c.GetCol());
+                    Button boardButton = c.GetButton();
 
-                    if (!c.GetCellContainPiece())
+                    if (boardButton.Name == button.Name)
                     {
-                        if (gameMode == 1)//single player only hovers red
+                        //Console.WriteLine("HOVER -  ROW: " + c.GetRow() + "    COL: " + c.GetCol());
+
+                        if (!c.GetCellContainPiece())
                         {
-                            gameBoard.showMove(c.GetCol(), 1, hover);
-                        }//If cell does not contain a piece
-                        else
-                        {
-                            gameBoard.showMove(c.GetCol(), currentPlayer, hover);
+                            if (gameMode == 1)//single player only hovers red
+                            {
+                                gameBoard.showMove(c.GetCol(), 1, hover);
+                            }//If cell does not contain a piece
+                            else
+                            {
+                                gameBoard.showMove(c.GetCol(), currentPlayer, hover);
+                            }
                         }
                     }
                 }
             }
+            
         }
         //reset cell color when mouse is no longer hovering
         private void CellButtonLeave(object sender, EventArgs e)
         {
-            Button button = (Button)sender;
-            bool hover = false;
-
-            //get the board
-            Cell[,] board = gameBoard.GetGameBoard();
-
-            //cycle through each cell in the board and write the row and col in console as a test
-            foreach (Cell c in board)
+            if (!gameOver)
             {
-                Button boardButton = c.GetButton();
+                Button button = (Button)sender;
+                bool hover = false;
 
-                if (boardButton.Name == button.Name)
+                //get the board
+                Cell[,] board = gameBoard.GetGameBoard();
+
+                //cycle through each cell in the board and write the row and col in console as a test
+                foreach (Cell c in board)
                 {
-                    //Console.WriteLine("LEAVE - ROW: " + c.GetRow() + "    COL: " + c.GetCol());
-                    gameBoard.showMove(c.GetCol(), currentPlayer, hover);
+                    Button boardButton = c.GetButton();
+
+                    if (boardButton.Name == button.Name)
+                    {
+                        //Console.WriteLine("LEAVE - ROW: " + c.GetRow() + "    COL: " + c.GetCol());
+                        gameBoard.showMove(c.GetCol(), currentPlayer, hover);
+                    }
                 }
             }
+            
         }
 
         //explicitly states whose turn it is and changes once a piece is added
@@ -442,6 +462,7 @@ namespace ConnectFour_GroupFour
             //winner screen
             StatsForm sf = new StatsForm(startForm, this, winner);
             sf.Show();
+            gameOver = true;
 
             this.Hide();
 

@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chart_stats_gameStats = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -52,17 +52,17 @@
             // 
             // chart_stats_gameStats
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart_stats_gameStats.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart_stats_gameStats.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            this.chart_stats_gameStats.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart_stats_gameStats.Legends.Add(legend2);
             this.chart_stats_gameStats.Location = new System.Drawing.Point(180, 97);
             this.chart_stats_gameStats.Name = "chart_stats_gameStats";
             this.chart_stats_gameStats.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SemiTransparent;
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Games";
-            this.chart_stats_gameStats.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Games";
+            this.chart_stats_gameStats.Series.Add(series2);
             this.chart_stats_gameStats.Size = new System.Drawing.Size(718, 374);
             this.chart_stats_gameStats.TabIndex = 0;
             // 
@@ -138,8 +138,8 @@
             // 
             // btn_menu
             // 
-            this.btn_menu.Location = new System.Drawing.Point(940, 245);
-            this.btn_menu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_menu.Location = new System.Drawing.Point(939, 298);
+            this.btn_menu.Margin = new System.Windows.Forms.Padding(2);
             this.btn_menu.Name = "btn_menu";
             this.btn_menu.Size = new System.Drawing.Size(106, 51);
             this.btn_menu.TabIndex = 46;
@@ -149,8 +149,8 @@
             // 
             // btn_exit
             // 
-            this.btn_exit.Location = new System.Drawing.Point(940, 326);
-            this.btn_exit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_exit.Location = new System.Drawing.Point(939, 379);
+            this.btn_exit.Margin = new System.Windows.Forms.Padding(2);
             this.btn_exit.Name = "btn_exit";
             this.btn_exit.Size = new System.Drawing.Size(106, 51);
             this.btn_exit.TabIndex = 45;
@@ -162,7 +162,7 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(149)))), ((int)(((byte)(217)))));
             this.panel1.Location = new System.Drawing.Point(168, 85);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(744, 400);
             this.panel1.TabIndex = 47;
@@ -189,8 +189,8 @@
             // 
             // ReviewButton
             // 
-            this.ReviewButton.Location = new System.Drawing.Point(940, 166);
-            this.ReviewButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ReviewButton.Location = new System.Drawing.Point(939, 219);
+            this.ReviewButton.Margin = new System.Windows.Forms.Padding(2);
             this.ReviewButton.Name = "ReviewButton";
             this.ReviewButton.Size = new System.Drawing.Size(106, 51);
             this.ReviewButton.TabIndex = 50;
@@ -200,8 +200,8 @@
             // 
             // PlayAgainButton
             // 
-            this.PlayAgainButton.Location = new System.Drawing.Point(940, 85);
-            this.PlayAgainButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.PlayAgainButton.Location = new System.Drawing.Point(939, 142);
+            this.PlayAgainButton.Margin = new System.Windows.Forms.Padding(2);
             this.PlayAgainButton.Name = "PlayAgainButton";
             this.PlayAgainButton.Size = new System.Drawing.Size(106, 51);
             this.PlayAgainButton.TabIndex = 51;
