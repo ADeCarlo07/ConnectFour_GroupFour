@@ -68,7 +68,7 @@ namespace ConnectFour_GroupFour
 
         private void lbl_credits_MouseLeave(object sender, EventArgs e)
         {
-            lbl_credits.ForeColor = Color.Black;
+            lbl_credits.ForeColor = Color.White;
             lbl_credits.Font = new Font(lbl_credits.Font, FontStyle.Regular);
             list_credits.Visible = false;
             list_credits.Items.Clear();

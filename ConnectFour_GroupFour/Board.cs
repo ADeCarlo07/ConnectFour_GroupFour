@@ -270,11 +270,14 @@ namespace ConnectFour_GroupFour
         public int ScanCellBelow(int Row, int Column,  int Color)
         {
             if (Row < 0 || Row > 5 || Column < 0 || Column > 6)//safety check, stay in the array
+            {
                 return 0;
+            }    
             if (gameBoard[Row, Column].GetPieceColor() == Color)// if the color matches
             {
                 return 1 + ScanCellBelow(Row+1, Column, Color);//add 1 to piece for match and check for further connections
             }
+
             else return 0;// no match = return 0
         }
 
@@ -282,7 +285,9 @@ namespace ConnectFour_GroupFour
         {
             
             if (Row < 0 || Row > 5 || Column < 0 || Column > 6)
+            {
                 return 0;
+            }
             if (gameBoard[Row, Column].GetPieceColor() == Color)
             {
                 return 1 + ScanCellLeft(Row, Column-1, Color);
@@ -293,7 +298,9 @@ namespace ConnectFour_GroupFour
         public int ScanCellRight(int Row, int Column, int Color)
         {
             if (Row < 0 || Row > 5 || Column < 0 || Column > 6)
+            {
                 return 0;
+            }
             if (gameBoard[Row, Column].GetPieceColor() == Color)
             {
                 return 1 + ScanCellRight(Row, Column+1, Color);
@@ -304,7 +311,9 @@ namespace ConnectFour_GroupFour
         public int ScanCellUpRight(int Row, int Column, int Color)
         {
             if (Row < 0 || Row > 5 || Column < 0 || Column > 6)
+            {
                 return 0;
+            }
             if (gameBoard[Row, Column].GetPieceColor() == Color)
             {
                 return 1 + ScanCellUpRight(Row-1, Column+1, Color);
@@ -315,7 +324,9 @@ namespace ConnectFour_GroupFour
         public int ScanCellUpLeft(int Row, int Column, int Color)
         {
             if (Row < 0 || Row > 5 || Column < 0 || Column > 6)
+            {
                 return 0;
+            }
             if (gameBoard[Row, Column].GetPieceColor() == Color)
             {
                 return 1 + ScanCellUpLeft(Row-1, Column-1, Color);
@@ -326,7 +337,9 @@ namespace ConnectFour_GroupFour
         public int ScanCellDownRight(int Row, int Column, int Color)
         {
             if (Row < 0 || Row > 5 || Column < 0 || Column > 6)
+            {
                 return 0;
+            }
             if (gameBoard[Row, Column].GetPieceColor() == Color)
             {
                 return 1 + ScanCellDownRight(Row+1, Column+1, Color);
@@ -337,7 +350,9 @@ namespace ConnectFour_GroupFour
         public int ScanCellDownLeft(int Row, int Column, int Color)
         {
             if (Row < 0 || Row > 5 || Column < 0 || Column > 6)
+            {
                 return 0;
+            }
             if (gameBoard[Row, Column].GetPieceColor() == Color)
             {
                 return 1 + ScanCellDownLeft(Row+1, Column-1, Color);
@@ -378,24 +393,28 @@ namespace ConnectFour_GroupFour
                     if(c + 3 < 7 && player == gameBoard[r,c + 1].GetPieceColor() && 
                         player == gameBoard[r, c + 2].GetPieceColor() && player == gameBoard[r, c + 3].GetPieceColor())
                     {
+                        Console.WriteLine("WinPlay:" + player);
                         return player;
                     }
                     //vertical check
                     if(r + 3 < 6 && player == gameBoard[r + 1, c].GetPieceColor() &&
                         player == gameBoard[r + 2, c].GetPieceColor() && player == gameBoard[r + 3, c].GetPieceColor())
                     {
+                        Console.WriteLine("WinPlay:" + player);
                         return player;
                     }
                     //diagnol down right
                     if(r + 3 < 6 && c + 3 < 7 && player == gameBoard[r + 1, c + 1].GetPieceColor() &&
                         player == gameBoard[r + 2, c + 2].GetPieceColor() && player == gameBoard[r + 3, c + 3].GetPieceColor())
                     {
+                        Console.WriteLine("WinPlay:" + player);
                         return player;
                     }
                     //diagnol down left
                     if(r + 3 < 6 && c - 3 >= 0 && player == gameBoard[r + 1, c - 1].GetPieceColor() &&
                         player == gameBoard[r + 2, c - 2].GetPieceColor() && player == gameBoard[r + 3, c - 3].GetPieceColor())
                     {
+                        Console.WriteLine("WinPlay:" + player);
                         return player;
                     }
                 }
