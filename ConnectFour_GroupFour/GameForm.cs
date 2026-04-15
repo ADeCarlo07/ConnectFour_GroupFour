@@ -38,6 +38,10 @@ namespace ConnectFour_GroupFour
             //global variable of the start form so it can be referenced
             startForm = sf;
             gameMode = mode;
+            if (gameMode == 1)
+                gameBoard.setAIActive(true);
+            else 
+                gameBoard.setAIActive(false);
         }
 
         private void GameForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -46,7 +50,7 @@ namespace ConnectFour_GroupFour
             startForm.closeAll();
         }
 
-        private void exitProgram (object sender, EventArgs e)
+        private void exitProgram(object sender, EventArgs e)
         {
             startForm.closeAll();
         }
@@ -219,7 +223,7 @@ namespace ConnectFour_GroupFour
             {
                 //like in professors example, each cell name is in a pattern (cell_row_col) so I can
                 //evaluate where it needs to go in board 2D array from there
-                
+
                 //make sure we are only looking at buttons whose name has cell in it
                 if (b.Name.Contains("cell"))
                 {
@@ -252,7 +256,7 @@ namespace ConnectFour_GroupFour
 
                     //in beg of game no cells contain pieces
                     c.SetCellContainsPiece(false);
-                    
+
                     //add that cell to the gameboard
                     gameBoard.SetGameBoardCell(c);
                 }
@@ -283,7 +287,10 @@ namespace ConnectFour_GroupFour
                     if (!c.GetCellContainPiece())
                     {
                         //If cell does not contain a piece
-                        gameBoard.addPiece(c.GetCol(), currentPlayer);
+                        if(gameMode == 1)//if single player its only ever adding red
+                            gameBoard.addPiece(c.GetCol(), 1);
+                        else
+                            gameBoard.addPiece(c.GetCol(), currentPlayer);
                         //check for win
                         int winner = gameBoard.CheckWin();
 
@@ -293,13 +300,13 @@ namespace ConnectFour_GroupFour
                             return;
                         }
                         //check for draw
-                        if(gameBoard.CheckDraw())
+                        if (gameBoard.CheckDraw())
                         {
                             EndGame(0);
                             return;
                         }
                         //switches between player turns after placing a piece
-                        if(currentPlayer == 1)
+                        if (currentPlayer == 1)
                         {
                             currentPlayer = 2;
                         }
@@ -346,8 +353,12 @@ namespace ConnectFour_GroupFour
 
                     if (!c.GetCellContainPiece())
                     {
-                        //If cell does not contain a piece
-                        gameBoard.showMove(c.GetCol(), currentPlayer, hover);
+                        if (gameMode == 1)//single player only hovers red
+                        {
+                            gameBoard.showMove(c.GetCol(), 1, hover);
+                        }//If cell does not contain a piece
+                        else
+                            gameBoard.showMove(c.GetCol(), currentPlayer, hover);
                     }
                 }
             }
@@ -390,7 +401,7 @@ namespace ConnectFour_GroupFour
             }
             else
             {
-                if(currentPlayer == 1)
+                if (currentPlayer == 1)
                 {
                     lbl_turn.Text = "Player 1's Turn";
                 }
@@ -428,5 +439,6 @@ namespace ConnectFour_GroupFour
             sf.Show();
             this.Hide();
         }
+        
     }
 }

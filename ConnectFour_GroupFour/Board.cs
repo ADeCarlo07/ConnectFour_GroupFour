@@ -16,6 +16,7 @@ namespace ConnectFour_GroupFour
         private const int numCols = 7;
         Cell[,] gameBoard = new Cell[numRows, numCols];
         int[] ColHeight = {5,5,5,5,5,5,5};//how many pieces are in each col The Bottom is row 5, so -1 every time a piece is added
+        bool AIenabled = false;
 
         public int GetNumRows()
         {
@@ -50,7 +51,12 @@ namespace ConnectFour_GroupFour
                     gameBoard[ColHeight[col], col].GetButton().BackgroundImage = Resources.tile_redPiece;
                     gameBoard[ColHeight[col], col].SetPieceColor(1);
                     ColHeight[col]--;//tell the board the height change
-                    scanBoard();//scan the new board for the ai's turn
+                    if(AIenabled)
+                    {
+                        scanBoard();//scan the new board for the ai's turn 
+                        // the placement function is called in scanboard
+                    }
+                    
                 }
                 else
                 {
@@ -169,7 +175,95 @@ namespace ConnectFour_GroupFour
                     }
                 }
             }
+            AIMakeMove(pieceConnectionScore, pieceBlockScore, pieceDangerScore);
             //return wincheck;
+        }
+        private void AIMakeMove(int[,] Connects, int[,] Danger, int[,] NextDanger)
+        {// this is called in scanBoard
+            bool[] avoidCols = { false, false, false, false, false, false, false };
+            int[] totalConnectScore = { 0,0,0,0,0,0,0};
+            int bestIndex = -1;//if it remains -1 it means the ai lost and it will have to make an unideal move
+            int bestScore = int.MinValue;
+            for (int i = 0; i < 7; i++)
+            {
+
+            }
+            for(int i = 0; i < 7; i++)///WIN CASE
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    if(Connects[j, i] >= 3 && ColHeight[i] >= 0)
+                    {
+                        addPiece(i,2);//add a piece at the win spot as the AI
+                        return;
+                    }
+                }
+            }
+            for (int i = 0; i < 7; i++)///BLOCK CASE
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    if (Danger[j, i] >= 3 && ColHeight[i] >= 0)
+                    {
+                        addPiece(i, 2);//add a piece to block the player
+                        return;
+                    }
+                }
+            }
+            for (int i = 0; i < 7; i++)///AVOID NOTES
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    if (NextDanger[j, i] >= 3 && ColHeight[i] >= 0)
+                    {
+                        avoidCols[i] = true;
+                    }
+                }
+            }
+            for (int i = 0; i < 7; i++)///Evaluate Connection Score
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    if (Connects[j,i] == 3)//prioritise longer connections over just the total number of connections
+                    {
+                        totalConnectScore[i] += 4;
+                    }
+                    else if (Connects[j, i] == 2)
+                    {
+                        totalConnectScore[i] += 2;
+                    }
+                    else if (Connects[j, i] == 1)
+                    {
+                        totalConnectScore[i] += 1;
+                    }
+                }
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                if (!avoidCols[i] && totalConnectScore[i] > bestScore && ColHeight[i] >= 0)
+                {
+                    bestScore = totalConnectScore[i];
+                    bestIndex = i;
+                }
+            }
+            if(bestIndex != -1)
+            {
+                addPiece(bestIndex, 2);
+                return;
+            }
+            else//AI LOSES NEXT TURN So ignore the ignore cols
+            {
+                for (int i = 0;i < 7;i++)
+                {
+                    if (totalConnectScore[i] > bestScore && ColHeight[i] >= 0)
+                    {
+                        bestScore = totalConnectScore[i];
+                        bestIndex = i;
+                    }
+                }
+            }
+            addPiece(bestIndex, 2);
+            return;
         }
         // recursive cell scanners
         // give them a cell to start at if the cell matches its' called again, 1 = RED player 2 = YELLOW ai
@@ -320,6 +414,10 @@ namespace ConnectFour_GroupFour
                 }
             }
             return true;
+        }
+        public void setAIActive(bool state)
+        {
+            AIenabled = state;
         }
     }
 }
