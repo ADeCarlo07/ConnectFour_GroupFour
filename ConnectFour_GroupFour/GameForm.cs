@@ -66,8 +66,12 @@ namespace ConnectFour_GroupFour
 
         private void btn_menu_Click(object sender, EventArgs e)
         {
-            startForm.Show();
-            this.Hide();
+            if (!gameOver)
+            {
+                startForm.Show();
+                this.Hide();
+            }
+            
         }
 
         //better to handle the text file updates in stats since that is displayed after each game
@@ -460,7 +464,11 @@ namespace ConnectFour_GroupFour
             //update stats file
             //UpdateTextFile(winner);
             //winner screen
+
+            btn_menu.Visible = false;
+            btn_game_returnToStat.Visible = true;
             StatsForm sf = new StatsForm(startForm, this, winner);
+            statsForm = sf;
             sf.Show();
             gameOver = true;
 
@@ -520,6 +528,12 @@ namespace ConnectFour_GroupFour
             //cell_5_4.Enabled = false;
             //cell_5_5.Enabled = false;
             //cell_5_6.Enabled = false;
+        }
+
+        private void btn_game_returnToStat_Click(object sender, EventArgs e)
+        {
+            statsForm.Show();
+            this.Hide();
         }
     }
 }

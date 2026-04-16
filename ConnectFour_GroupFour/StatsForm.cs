@@ -66,6 +66,7 @@ namespace ConnectFour_GroupFour
             PlayAgainButton.Visible = true;
 
             UpdateStats(winner);
+            GraphSectionColorChanger(winner);
             WinText.Visible = true;
 
             if (winner == 0)
@@ -107,6 +108,232 @@ namespace ConnectFour_GroupFour
             //}
 
         }
+
+        //this looks clunky and hard to read, but things are done in a very
+        //specific order as to not mess up the order of cols on the graph.
+
+        //- First, both series are cleared. Next, I add them in the highlight
+        //series in this order: AI, Player 1, Player 2, Draw. So when you see
+        //certain pieces cut and pasted in different sections its all to make
+        //sure the order is maintained.
+
+        //- There are if statements checking to make sure certain vals are not neg.
+        //For example: "draw - 1". I don't know how neccesary it is because I've
+        //never worked with charts on this but safety first. 
+        
+        //- After highlights are initialized, game series on the chart is filled out.
+        //It goes in the same order (AI, Player 1, Player 2, Draw). 
+
+        //- Lastly, if a val - 1 is 0, then we don't add the point in the games series
+        //as val - 1, it would just be val with the pointer colored to green
+
+        //all of this can be done because I changed the series chart type on both
+        //game and highlight to stacked col
+        private void GraphSectionColorChanger(int winner)
+        {
+            if (winner == 0)
+            {
+                //draw
+                chart_stats_gameStats.Series["Games"].Points.Clear();
+                chart_stats_gameStats.Series["Highlight"].Points.Clear();
+
+
+                chart_stats_gameStats.Series["Highlight"].Points.AddXY("AI", 0);
+                chart_stats_gameStats.Series["Highlight"].Points.AddXY("Player 1", 0);
+                chart_stats_gameStats.Series["Highlight"].Points.AddXY("Player 2", 0);
+
+                if (draws - 1 > 0)
+                {
+                    chart_stats_gameStats.Series["Highlight"].Points.AddXY("Draw", 1);
+                    chart_stats_gameStats.Series["Highlight"].Points[3].Color = Color.FromArgb(200, 0, 255, 0);
+                }
+                else
+                {
+                    chart_stats_gameStats.Series["Highlight"].Points.AddXY("Draw", 0);
+                }
+
+
+                //initialize others
+                chart_stats_gameStats.Series["Games"].Points.AddXY("AI", aiWins);
+                chart_stats_gameStats.Series["Games"].Points.AddXY("Player 1", player1Wins);
+                chart_stats_gameStats.Series["Games"].Points.AddXY("Player 2", player2Wins);
+
+                //color others
+                chart_stats_gameStats.Series["Games"].Points[0].Color = Color.FromArgb(200, 255, 255, 0);
+                chart_stats_gameStats.Series["Games"].Points[1].Color = Color.FromArgb(200, 255, 0, 0);
+                chart_stats_gameStats.Series["Games"].Points[2].Color = Color.FromArgb(200, 255, 255, 0);
+
+                //color previous segment of draw
+                if (draws - 1 > 0)
+                {
+                    chart_stats_gameStats.Series["Games"].Points.AddXY("Draw", draws - 1);
+                    chart_stats_gameStats.Series["Games"].Points[3].Color = Color.FromArgb(200, 255, 165, 0);
+                }
+                else
+                {
+                    //don't want the chart to go into the negatives
+                    chart_stats_gameStats.Series["Games"].Points.AddXY("Draw", draws);
+                    chart_stats_gameStats.Series["Games"].Points[3].Color = Color.FromArgb(200, 0, 255, 0);
+                }
+                
+
+                
+
+            }
+
+            if (winner == 1)
+            {
+                //player 1 win
+                chart_stats_gameStats.Series["Games"].Points.Clear();
+                chart_stats_gameStats.Series["Highlight"].Points.Clear();
+
+                chart_stats_gameStats.Series["Highlight"].Points.AddXY("AI", 0);
+
+                if (player1Wins - 1 > 0)
+                {
+                    chart_stats_gameStats.Series["Highlight"].Points.AddXY("Player 1", 1);
+                    chart_stats_gameStats.Series["Highlight"].Points[1].Color = Color.FromArgb(200, 0, 255, 0);
+                }
+                else
+                {
+                    chart_stats_gameStats.Series["Highlight"].Points.AddXY("Player 1", 0);
+                }
+
+                chart_stats_gameStats.Series["Highlight"].Points.AddXY("Player 2", 0);
+                chart_stats_gameStats.Series["Highlight"].Points.AddXY("Draw", 0);
+
+
+                chart_stats_gameStats.Series["Games"].Points.AddXY("AI", aiWins);
+
+                //color previous segment
+                if (player1Wins - 1 > 0)
+                {
+                    chart_stats_gameStats.Series["Games"].Points.AddXY("Player 1", player1Wins - 1);
+                    chart_stats_gameStats.Series["Games"].Points[1].Color = Color.FromArgb(200, 255, 0, 0);
+                }
+                else
+                {
+                    //don't want the chart to go into the negatives
+                    chart_stats_gameStats.Series["Games"].Points.AddXY("Player 1", player1Wins);
+                    chart_stats_gameStats.Series["Games"].Points[1].Color = Color.FromArgb(200, 0, 255, 0);
+                }
+                
+                chart_stats_gameStats.Series["Games"].Points.AddXY("Player 2", player2Wins);
+                chart_stats_gameStats.Series["Games"].Points.AddXY("Draw", draws);
+
+                chart_stats_gameStats.Series["Games"].Points[0].Color = Color.FromArgb(200, 255, 255, 0);
+                chart_stats_gameStats.Series["Games"].Points[2].Color = Color.FromArgb(200, 255, 255, 0);
+                chart_stats_gameStats.Series["Games"].Points[3].Color = Color.FromArgb(200, 255, 165, 0);
+
+
+
+                
+             
+            }
+
+            if (winner == 2)
+            {
+                //player 2 win
+                chart_stats_gameStats.Series["Games"].Points.Clear();
+                chart_stats_gameStats.Series["Highlight"].Points.Clear();
+
+
+                chart_stats_gameStats.Series["Highlight"].Points.AddXY("AI", 0);
+                chart_stats_gameStats.Series["Highlight"].Points.AddXY("Player 1", 0);
+
+                if (player2Wins - 1 > 0)
+                {
+                    chart_stats_gameStats.Series["Highlight"].Points.AddXY("Player 2", 1);
+                    chart_stats_gameStats.Series["Highlight"].Points[2].Color = Color.FromArgb(200, 0, 255, 0);
+                }
+                else
+                {
+                    chart_stats_gameStats.Series["Highlight"].Points.AddXY("Player 2", 0);
+                }
+
+               
+          
+                chart_stats_gameStats.Series["Highlight"].Points.AddXY("Draw", 0);
+
+
+
+                chart_stats_gameStats.Series["Games"].Points.AddXY("AI", aiWins);
+                chart_stats_gameStats.Series["Games"].Points.AddXY("Player 1", player1Wins);
+
+                chart_stats_gameStats.Series["Games"].Points[0].Color = Color.FromArgb(200, 255, 255, 0);
+                chart_stats_gameStats.Series["Games"].Points[1].Color = Color.FromArgb(200, 255, 0, 0);
+
+                //color previous segment
+                if (player2Wins - 1 > 0)
+                {
+                    chart_stats_gameStats.Series["Games"].Points.AddXY("Player 2", player2Wins - 1);
+                    chart_stats_gameStats.Series["Games"].Points[2].Color = Color.FromArgb(200, 255, 255, 0);
+                }
+                else
+                {
+                    //don't want the chart to go into the negatives
+                    chart_stats_gameStats.Series["Games"].Points.AddXY("Player 2", player2Wins);
+                    chart_stats_gameStats.Series["Games"].Points[2].Color = Color.FromArgb(200, 0, 255, 0);
+                }
+
+                chart_stats_gameStats.Series["Games"].Points.AddXY("Draw", draws);
+
+                chart_stats_gameStats.Series["Games"].Points[3].Color = Color.FromArgb(200, 255, 165, 0);
+
+                
+
+
+            }
+
+            if (winner == 3)
+            {
+                //ai wins
+                chart_stats_gameStats.Series["Games"].Points.Clear();
+                chart_stats_gameStats.Series["Highlight"].Points.Clear();
+
+                if (aiWins - 1 > 0)
+                {
+                    chart_stats_gameStats.Series["Highlight"].Points.AddXY("AI", 1);
+                    chart_stats_gameStats.Series["Highlight"].Points[0].Color = Color.FromArgb(200, 0, 255, 0);
+                }
+                else
+                {
+                    chart_stats_gameStats.Series["Highlight"].Points.AddXY("AI", 0);
+                }
+
+                chart_stats_gameStats.Series["Highlight"].Points.AddXY("Player 1", 0);
+                chart_stats_gameStats.Series["Highlight"].Points.AddXY("Player 2", 0);
+                chart_stats_gameStats.Series["Highlight"].Points.AddXY("Draw", 0);
+
+
+
+                //color previous segment
+                if (aiWins - 1 > 0)
+                {
+                    chart_stats_gameStats.Series["Games"].Points.AddXY("AI", aiWins - 1);
+                    chart_stats_gameStats.Series["Games"].Points[0].Color = Color.FromArgb(200, 255, 255, 0);
+
+                }
+                else
+                {
+                    //don't want the chart to go into the negatives
+                    chart_stats_gameStats.Series["Games"].Points.AddXY("AI", aiWins);
+                    chart_stats_gameStats.Series["Games"].Points[0].Color = Color.FromArgb(200, 0, 255, 0);
+                }
+                chart_stats_gameStats.Series["Games"].Points.AddXY("Player 1", player1Wins);
+                chart_stats_gameStats.Series["Games"].Points.AddXY("Player 2", player2Wins);
+                chart_stats_gameStats.Series["Games"].Points.AddXY("Draw", draws);
+
+
+                chart_stats_gameStats.Series["Games"].Points[1].Color = Color.FromArgb(200, 255, 0, 0);
+                chart_stats_gameStats.Series["Games"].Points[2].Color = Color.FromArgb(200, 255, 255, 0);
+                chart_stats_gameStats.Series["Games"].Points[3].Color = Color.FromArgb(200, 255, 165, 0);
+
+
+                
+            }
+        }
+
         private void btn_menu_Click(object sender, EventArgs e)
         {
             startForm.Show();
@@ -318,6 +545,7 @@ namespace ConnectFour_GroupFour
 
         private void InitChart()
         {
+            chart_stats_gameStats.Legends.Clear();
             chart_stats_gameStats.Series["Games"].Points.AddXY("AI", aiWins);
             chart_stats_gameStats.Series["Games"].Points.AddXY("Player 1", player1Wins);
             chart_stats_gameStats.Series["Games"].Points.AddXY("Player 2", player2Wins);
@@ -334,11 +562,13 @@ namespace ConnectFour_GroupFour
             double aiWinPerc = ((double)aiWins / (double)totalGames) * 100;
             double player1WinPerc = ((double)player1Wins / (double)totalGames) * 100;
             double player2WinPerc = ((double)player2Wins / (double)totalGames) * 100;
+            double drawPerc = ((double)draws / (double)totalGames) * 100;
 
             //updated percentage displays
             lbl_stats_aiWinPerc.Text = aiWinPerc.ToString("0.00") + "%";
             lbl_stats_player1WinPerc.Text = player1WinPerc.ToString("0.00") + "%";
             lbl_stats_player2WinPerc.Text = player2WinPerc.ToString("0.00") + "%";
+            lbl_stats_drawPerc.Text = drawPerc.ToString("0.00") + "%";
             lbl_stats_totalGames.Text = totalGames.ToString();
 
             //chart_stats_gameStats.Series["Games"].Points.AddXY("AI", aiWins);
