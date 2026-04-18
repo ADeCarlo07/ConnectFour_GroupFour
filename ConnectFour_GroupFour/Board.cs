@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms.VisualStyles;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace ConnectFour_GroupFour
 {
@@ -182,7 +183,8 @@ namespace ConnectFour_GroupFour
         {// this is called in scanBoard
             bool[] avoidCols = { false, false, false, false, false, false, false };
             int[] totalConnectScore = { 0,0,0,0,0,0,0};
-            int bestIndex = -1;//if it remains -1 it means the ai lost and it will have to make an unideal move
+            List<int> bestIndexs = new List<int>();
+            int selectedIndex = -1;
             int bestScore = int.MinValue;
             for (int i = 0; i < 7; i++)
             {
@@ -240,29 +242,51 @@ namespace ConnectFour_GroupFour
             }
             for (int i = 0; i < 7; i++)
             {
-                if (!avoidCols[i] && totalConnectScore[i] > bestScore && ColHeight[i] >= 0)
+                if (!avoidCols[i] && ColHeight[i] >= 0)
                 {
-                    bestScore = totalConnectScore[i];
-                    bestIndex = i;
-                }
-            }
-            if(bestIndex != -1)
-            {
-                addPiece(bestIndex, 2);
-                return;
-            }
-            else//AI LOSES NEXT TURN So ignore the ignore cols
-            {
-                for (int i = 0;i < 7;i++)
-                {
-                    if (totalConnectScore[i] > bestScore && ColHeight[i] >= 0)
+                    if (totalConnectScore[i] > bestScore)
                     {
                         bestScore = totalConnectScore[i];
-                        bestIndex = i;
+                        bestIndexs.Clear();/// clear all lower scores
+                        bestIndexs.Add(i);// add new high score
+                    }
+                    else if (totalConnectScore[i] == bestScore)
+                    {
+                        bestIndexs.Add(i);/// tracks all indexs with equal score
                     }
                 }
             }
-            addPiece(bestIndex, 2);
+            Random rand = new Random();
+            if (bestIndexs.Count > 0)
+            {
+
+                selectedIndex = bestIndexs[rand.Next(bestIndexs.Count)];//randomly choose a col with highest score
+                addPiece(selectedIndex, 2);
+                return;
+            }
+            bestIndexs.Clear();///////// if no tile was placed the ai is assuming it will lose
+            bestScore = int.MinValue;/// so we have to change it's logic to end its turn
+            for (int i = 0; i < 7; i++)
+            {
+                if (ColHeight[i] >= 0)// same loop as above but now we ignore avoid cols
+                {
+                    if (totalConnectScore[i] > bestScore)///ignore the cols marked as avoid
+                    {
+                        bestScore = totalConnectScore[i];
+                        bestIndexs.Clear();
+                        bestIndexs.Add(i);
+                    }
+                    else if (totalConnectScore[i] == bestScore)
+                    {
+                        bestIndexs.Add(i);
+                    }
+                }
+            }
+            if (bestIndexs.Count > 0)
+            {
+                selectedIndex = bestIndexs[rand.Next(bestIndexs.Count)];
+            }
+            addPiece(selectedIndex, 2);
             return;
         }
         // recursive cell scanners
