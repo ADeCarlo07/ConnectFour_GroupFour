@@ -18,6 +18,7 @@ namespace ConnectFour_GroupFour
         Cell[,] gameBoard = new Cell[numRows, numCols];
         int[] ColHeight = {5,5,5,5,5,5,5};//how many pieces are in each col The Bottom is row 5, so -1 every time a piece is added
         bool AIenabled = false;
+        private bool gameOver = false;
 
         public int GetNumRows()
         {
@@ -40,7 +41,10 @@ namespace ConnectFour_GroupFour
 
         public void addPiece(int col, int player)// adds a cell to the given Col
         {
-            
+            if (gameOver)
+            {
+                return;
+            }
             if (ColHeight[col] >= 0)//safety check, make sure we are not in a negative col
             {
                 Console.WriteLine("PLACING IN COL: " + col);
@@ -51,13 +55,7 @@ namespace ConnectFour_GroupFour
                 {
                     gameBoard[ColHeight[col], col].GetButton().BackgroundImage = Resources.tile_redPiece;
                     gameBoard[ColHeight[col], col].SetPieceColor(1);
-                    ColHeight[col]--;//tell the board the height change
-                    if(AIenabled)
-                    {
-                        scanBoard();//scan the new board for the ai's turn 
-                        // the placement function is called in scanboard
-                    }
-                    
+                    ColHeight[col]--;//tell the board the height change  
                 }
                 else
                 {
@@ -461,6 +459,18 @@ namespace ConnectFour_GroupFour
         public void setAIActive(bool state)
         {
             AIenabled = state;
+        }
+        public void MakeAIMove(bool gameOver)
+        {
+            if(gameOver)
+            {
+                return;
+            }
+            scanBoard();
+        }
+        public void SetGameOver(bool state)
+        {
+            gameOver = state;
         }
     }
 }

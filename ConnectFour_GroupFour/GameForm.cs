@@ -338,21 +338,16 @@ namespace ConnectFour_GroupFour
                             if (winner != 0)
                             {
                                 sound_win.Play();
+
                                 if (winner == 2 && gameMode == 1)
                                 {
                                     EndGame(winner + 1);
                                 }
-
                                 else
                                 {
                                     EndGame(winner);
                                 }
-
                                 return;
-                            }
-                            else //if a win didnt happen yet
-                            {
-                                sound_place.Play();
                             }
                             //check for draw
                             if (gameBoard.CheckDraw())
@@ -360,21 +355,47 @@ namespace ConnectFour_GroupFour
                                 EndGame(0);
                                 return;
                             }
+                            //AI MOVE
+                            if (gameMode == 1)
+                            {
+                                gameBoard.MakeAIMove(gameOver); //this replaces the old scanBoard trigger
+                                sound_place.Play();
+                            }
+                            //check for win again
+                            winner = gameBoard.CheckWin();
+                            if (winner != 0)
+                            {
+                                sound_win.Play();
+
+                                if (winner == 2)
+                                {
+                                    EndGame(3);
+                                }
+                                else
+                                {
+                                    EndGame(winner);
+                                }
+                                    return;
+                            }
+                            //check for draw again
+                            if (gameBoard.CheckDraw())
+                            {
+                                EndGame(0);
+                                return;
+                            }
                             //switches between player turns after placing a piece
-                            if (currentPlayer == 1)
+                            if (gameMode == 2)
                             {
-                                currentPlayer = 2;
+                                if (currentPlayer == 1)
+                                {
+                                    currentPlayer = 2;
+                                }
+                                else
+                                {
+                                    currentPlayer = 1;
+                                }
                             }
-                            else
-                            {
-                                currentPlayer = 1;
-                            }
-                            //FOR AI LOGIC:
-                            //it would look something like this
-                            //if(gameMode == 1 && currentPlayer == 2)
-                            //{
-                            ////ai algorithm
-                            //}
+
                             UpdateTurnLabel();
                         }
                         else
@@ -486,6 +507,7 @@ namespace ConnectFour_GroupFour
 
         private void EndGame(int winner)
         {
+            gameBoard.SetGameOver(true);
             //winner meanings: 0 = draw, 1 = player 1, 2 = player 2/ AI
             Console.WriteLine("Game Over. Winner = " + winner);
             //update stats file
@@ -494,11 +516,12 @@ namespace ConnectFour_GroupFour
 
             btn_menu.Visible = false;
             btn_game_returnToStat.Visible = true;
+
             StatsForm sf = new StatsForm(startForm, this, winner);
             statsForm = sf;
             sf.Show();
-            gameOver = true;
 
+            gameOver = true;
             this.Hide();
 
             return;

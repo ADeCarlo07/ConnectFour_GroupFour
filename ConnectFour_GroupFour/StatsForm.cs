@@ -490,12 +490,12 @@ namespace ConnectFour_GroupFour
                 draws += 1;
             }
             //player 1 wins
-            if (winner == 1)
+            else if (winner == 1)
             {
                 player1Wins += 1;
             }
             //player 2 wins
-            if (winner == 2)
+            else if (winner == 2)
             {
                 player2Wins += 1;
             }
