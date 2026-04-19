@@ -119,5 +119,11 @@
   <ItemGroup>
     <None Include="Resources\tile_yellowPieceTransparent.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\c4hoverover2.wav" />
+    <Content Include="Resources\c4place.wav" />
+    <Content Include="Resources\c4select2.wav" />
+    <Content Include="Resources\c4win.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

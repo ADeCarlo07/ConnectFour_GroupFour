@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -21,6 +22,8 @@ namespace ConnectFour_GroupFour
         private int player2Wins;
         private int draws;
         private int totalGames;
+        SoundPlayer sound_hover = new SoundPlayer(Properties.Resources.c4hoverover2);
+        SoundPlayer sound_select = new SoundPlayer(Properties.Resources.c4select2);
 
         public StatsForm()
         {
@@ -31,6 +34,16 @@ namespace ConnectFour_GroupFour
         public StatsForm(StartForm sf) //if stats was entered from the menu
         {
             InitializeComponent();
+            //hover over buttons
+            btn_menu.MouseEnter += (s, e) =>
+            {
+                sound_hover.Play();
+            };
+            btn_exit.MouseEnter += (s, e) =>
+            {
+                sound_hover.Play();
+            };
+            //
             startForm = sf;
 
             InitDummyData();
@@ -53,6 +66,24 @@ namespace ConnectFour_GroupFour
         public StatsForm(StartForm sf, GameForm gf, int winner)  //if stats was entered automatically after a game
         {
             InitializeComponent();
+            //hover over buttons
+            PlayAgainButton.MouseEnter += (s, e) =>
+            {
+                sound_hover.Play();
+            };
+            ReviewButton.MouseEnter += (s, e) =>
+            {
+                sound_hover.Play();
+            };
+            btn_menu.MouseEnter += (s, e) =>
+            {
+                sound_hover.Play();
+            };
+            btn_exit.MouseEnter += (s, e) =>
+            {
+                sound_hover.Play();
+            };
+            //
             startForm = sf;
             gameForm = gf;
 
@@ -336,6 +367,9 @@ namespace ConnectFour_GroupFour
 
         private void btn_menu_Click(object sender, EventArgs e)
         {
+            SoundPlayer sp = new SoundPlayer(Properties.Resources.c4select2);
+            sp.Play();
+
             startForm.Show();
             this.Hide();
         }
@@ -348,6 +382,9 @@ namespace ConnectFour_GroupFour
 
         private void exitProgram(object sender, EventArgs e)
         {
+            SoundPlayer sp = new SoundPlayer(Properties.Resources.c4select2);
+            sp.Play();
+
             startForm.closeAll();
         }
 
@@ -584,6 +621,9 @@ namespace ConnectFour_GroupFour
         //play again, only accessible after a game
         private void PlayAgainButton_Click(object sender, EventArgs e) 
         {
+            SoundPlayer sp = new SoundPlayer(Properties.Resources.c4select2);
+            sp.Play();
+
             this.Hide();
             gameForm.Hide();
 
@@ -602,6 +642,9 @@ namespace ConnectFour_GroupFour
         //review, only accessible after a game. only sends you back to the game for now
         private void ReviewButton_Click(object sender, EventArgs e) 
         {
+            SoundPlayer sp = new SoundPlayer(Properties.Resources.c4select2);
+            sp.Play();
+
             this.Hide();
             //startForm.loadBoard(1);
 
@@ -612,6 +655,9 @@ namespace ConnectFour_GroupFour
 
         private void btn_stats_twoPlayer_Click(object sender, EventArgs e)
         {
+            SoundPlayer sp = new SoundPlayer(Properties.Resources.c4select2);
+            sp.Play();
+
             this.Hide();
             gameForm.Hide();
             startForm.loadBoard(2);

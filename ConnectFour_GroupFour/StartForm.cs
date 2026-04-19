@@ -4,18 +4,41 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
 
 namespace ConnectFour_GroupFour
 {
     public partial class StartForm : Form
     {
+        SoundPlayer sound_hover = new SoundPlayer(Properties.Resources.c4hoverover2);
+        SoundPlayer sound_select = new SoundPlayer(Properties.Resources.c4select2);
         public StartForm()
         {
             InitializeComponent();
+
+            btn_sp.MouseEnter += (s, e) => //when the mouse begins hovering over the button
+            {
+                sound_hover.Play();
+                //SoundPlayer sp = new SoundPlayer(Properties.Resources.c4hoverover2);
+                //btn_sp.BackColor = Color.LightBlue;
+            };
+            btn_tp.MouseEnter += (s, e) =>
+            {
+                sound_hover.Play();
+            };
+            btn_stats.MouseEnter += (s, e) =>
+            {
+                sound_hover.Play();
+            };
+            btn_exit.MouseEnter += (s, e) =>
+            {
+                sound_hover.Play();
+            };
         }
         
         public void loadBoard(int p)
@@ -34,6 +57,7 @@ namespace ConnectFour_GroupFour
         //maybe we can consolidate clicking exit and clicking close?
         private void btn_exit_Click(object sender, EventArgs e)
         {
+            sound_select.Play();
             closeAll();
         }
         private void StartForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -50,11 +74,13 @@ namespace ConnectFour_GroupFour
         //single player button click
         private void btn_sp_Click(object sender, EventArgs e)
         {
+            sound_select.Play();
             loadBoard(1);
         }
         //two player button click
         private void btn_tp_Click(object sender, EventArgs e)
         {
+            sound_select.Play();
             loadBoard(2);
         }
 
@@ -87,6 +113,7 @@ namespace ConnectFour_GroupFour
         }
         private void btn_stats_Click(object sender, EventArgs e)
         {
+            sound_select.Play();
             StatsForm sf = new StatsForm(this);
 
             sf.Show();

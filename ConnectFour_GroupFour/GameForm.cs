@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Media;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +23,10 @@ namespace ConnectFour_GroupFour
         int gameMode; //1 = single player, 2 = 2 players
         bool gameOver = false;
         int modeType;
+        SoundPlayer sound_hover = new SoundPlayer(Properties.Resources.c4hoverover2);
+        SoundPlayer sound_select = new SoundPlayer(Properties.Resources.c4select2);
+        SoundPlayer sound_place = new SoundPlayer(Properties.Resources.c4place);
+        SoundPlayer sound_win = new SoundPlayer(Properties.Resources.c4win);
 
         public GameForm()
         {
@@ -33,6 +38,19 @@ namespace ConnectFour_GroupFour
         {
             modeType = mode;
             InitializeComponent();
+            //hover over buttons 
+            btn_game_returnToStat.MouseEnter += (s, e) =>
+            {
+                sound_hover.Play();
+            };
+            btn_exit.MouseEnter += (s, e) =>
+            {
+                sound_hover.Play();
+            };
+            btn_menu.MouseEnter += (s, e) =>
+            {
+                sound_hover.Play();
+            };
 
             //added because error kept displaying saying gameBoard was null
             gameBoard = new Board();
@@ -61,11 +79,15 @@ namespace ConnectFour_GroupFour
 
         private void exitProgram(object sender, EventArgs e)
         {
+            sound_select.Play();
+
             startForm.closeAll();
         }
 
         private void btn_menu_Click(object sender, EventArgs e)
         {
+            sound_select.Play();
+
             if (!gameOver)
             {
                 startForm.Show();
@@ -315,6 +337,7 @@ namespace ConnectFour_GroupFour
 
                             if (winner != 0)
                             {
+                                sound_win.Play();
                                 if (winner == 2 && gameMode == 1)
                                 {
                                     EndGame(winner + 1);
@@ -326,6 +349,10 @@ namespace ConnectFour_GroupFour
                                 }
 
                                 return;
+                            }
+                            else //if a win didnt happen yet
+                            {
+                                sound_place.Play();
                             }
                             //check for draw
                             if (gameBoard.CheckDraw())
@@ -532,6 +559,8 @@ namespace ConnectFour_GroupFour
 
         private void btn_game_returnToStat_Click(object sender, EventArgs e)
         {
+            sound_select.Play();
+
             statsForm.Show();
             this.Hide();
         }

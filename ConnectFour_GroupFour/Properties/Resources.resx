@@ -118,6 +118,22 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="c4hoverover2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\c4hoverover2.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <comment>hovering over a button</comment>
+  </data>
+  <data name="c4place" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\c4place.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <comment>when a piece is placed</comment>
+  </data>
+  <data name="c4select2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\c4select2.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <comment>select</comment>
+  </data>
+  <data name="c4win" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\c4win.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <comment>plays instead of place when a win is detected</comment>
+  </data>
   <data name="Stats" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Stats.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>

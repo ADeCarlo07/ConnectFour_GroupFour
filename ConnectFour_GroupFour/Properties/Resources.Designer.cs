@@ -61,11 +61,47 @@ namespace ConnectFour_GroupFour.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 8
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream c4hoverover2 {
+            get {
+                return ResourceManager.GetStream("c4hoverover2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream c4place {
+            get {
+                return ResourceManager.GetStream("c4place", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream c4select2 {
+            get {
+                return ResourceManager.GetStream("c4select2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream c4win {
+            get {
+                return ResourceManager.GetStream("c4win", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 1
         ///8
-        ///5
-        ///3
-        ///19
+        ///6
+        ///10
+        ///25
         ///.
         /// </summary>
         internal static string Stats {
