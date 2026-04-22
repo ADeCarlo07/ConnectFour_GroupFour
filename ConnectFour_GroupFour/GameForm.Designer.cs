@@ -810,6 +810,7 @@
             this.AfterGameTest.TabIndex = 46;
             this.AfterGameTest.Text = "AfterGameTest";
             this.AfterGameTest.UseVisualStyleBackColor = true;
+            this.AfterGameTest.Visible = false;
             this.AfterGameTest.Click += new System.EventHandler(this.AfterGameTest_Click);
             // 
             // btn_game_returnToStat

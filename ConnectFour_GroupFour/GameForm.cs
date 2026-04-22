@@ -337,7 +337,7 @@ namespace ConnectFour_GroupFour
 
                             if (winner != 0)
                             {
-                                sound_win.Play();
+                                //sound_win.Play();
 
                                 if (winner == 2 && gameMode == 1)
                                 {
@@ -352,6 +352,8 @@ namespace ConnectFour_GroupFour
                             //check for draw
                             if (gameBoard.CheckDraw())
                             {
+                                //sound_win.Play();
+
                                 EndGame(0);
                                 return;
                             }
@@ -365,7 +367,7 @@ namespace ConnectFour_GroupFour
                             winner = gameBoard.CheckWin();
                             if (winner != 0)
                             {
-                                sound_win.Play();
+                                //sound_win.Play();
 
                                 if (winner == 2)
                                 {
@@ -380,6 +382,8 @@ namespace ConnectFour_GroupFour
                             //check for draw again
                             if (gameBoard.CheckDraw())
                             {
+                                //sound_win.Play();
+
                                 EndGame(0);
                                 return;
                             }
@@ -507,6 +511,8 @@ namespace ConnectFour_GroupFour
 
         private void EndGame(int winner)
         {
+            sound_win.Play();
+
             gameBoard.SetGameOver(true);
             //winner meanings: 0 = draw, 1 = player 1, 2 = player 2/ AI
             Console.WriteLine("Game Over. Winner = " + winner);
