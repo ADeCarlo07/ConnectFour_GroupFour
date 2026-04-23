@@ -30,7 +30,6 @@ namespace ConnectFour_GroupFour
             InitializeComponent();
             InitDummyData();
         }
-
         public StatsForm(StartForm sf) //if stats was entered from the menu
         {
             InitializeComponent();
@@ -58,7 +57,6 @@ namespace ConnectFour_GroupFour
 
             UpdateLabels();
         }
-
         //if gameState == 1 then AI won
         //if gameState == 2 then Player 1 won
         //if gameState == 3 then Player 2 won
@@ -104,40 +102,18 @@ namespace ConnectFour_GroupFour
             {
                 WinText.Text = "Draw Game!!!";
             }
-
             if (winner == 1)
             {
                 WinText.Text = "Player 1 Wins!!!";
             }
-
             if (winner == 2)
             {
                 WinText.Text = "Player 2 Wins!!!";
             }
-
             if (winner == 3)
             {
                 WinText.Text = "AI Wins!!!";
             }
-
-
-            //WinText.Text = "You win!!!"; //doesnt tell you the winner yet
-            //doesnt work vvvvvvvvvv
-            //int e = 1;
-            //while (e < 5)
-            //{
-            //    e = e + 1;
-            //    for (int i = 0; i < 10; i++) {
-            //        Thread.Sleep(100);
-            //        WinText.Font = new Font(WinText.Font.FontFamily, 12 + i);
-            //    }
-            //    for (int i = 0; i < 10; i++)
-            //    {
-            //        Thread.Sleep(100);
-            //        WinText.Font = new Font(WinText.Font.FontFamily, 22 - i);
-            //    }
-            //}
-
         }
 
         //this looks clunky and hard to read, but things are done in a very
@@ -168,7 +144,6 @@ namespace ConnectFour_GroupFour
                 chart_stats_gameStats.Series["Games"].Points.Clear();
                 chart_stats_gameStats.Series["Highlight"].Points.Clear();
 
-
                 chart_stats_gameStats.Series["Highlight"].Points.AddXY("AI", 0);
                 chart_stats_gameStats.Series["Highlight"].Points.AddXY("Player 1", 0);
                 chart_stats_gameStats.Series["Highlight"].Points.AddXY("Player 2", 0);
@@ -182,7 +157,6 @@ namespace ConnectFour_GroupFour
                 {
                     chart_stats_gameStats.Series["Highlight"].Points.AddXY("Draw", 0);
                 }
-
 
                 //initialize others
                 chart_stats_gameStats.Series["Games"].Points.AddXY("AI", aiWins);
@@ -206,10 +180,6 @@ namespace ConnectFour_GroupFour
                     chart_stats_gameStats.Series["Games"].Points.AddXY("Draw", draws);
                     chart_stats_gameStats.Series["Games"].Points[3].Color = Color.FromArgb(200, 0, 255, 0);
                 }
-                
-
-                
-
             }
 
             if (winner == 1)
@@ -255,11 +225,6 @@ namespace ConnectFour_GroupFour
                 chart_stats_gameStats.Series["Games"].Points[0].Color = Color.FromArgb(200, 255, 255, 0);
                 chart_stats_gameStats.Series["Games"].Points[2].Color = Color.FromArgb(200, 255, 255, 0);
                 chart_stats_gameStats.Series["Games"].Points[3].Color = Color.FromArgb(200, 255, 165, 0);
-
-
-
-                
-             
             }
 
             if (winner == 2)
@@ -282,11 +247,7 @@ namespace ConnectFour_GroupFour
                     chart_stats_gameStats.Series["Highlight"].Points.AddXY("Player 2", 0);
                 }
 
-               
-          
                 chart_stats_gameStats.Series["Highlight"].Points.AddXY("Draw", 0);
-
-
 
                 chart_stats_gameStats.Series["Games"].Points.AddXY("AI", aiWins);
                 chart_stats_gameStats.Series["Games"].Points.AddXY("Player 1", player1Wins);
@@ -310,10 +271,6 @@ namespace ConnectFour_GroupFour
                 chart_stats_gameStats.Series["Games"].Points.AddXY("Draw", draws);
 
                 chart_stats_gameStats.Series["Games"].Points[3].Color = Color.FromArgb(200, 255, 165, 0);
-
-                
-
-
             }
 
             if (winner == 3)
@@ -336,8 +293,6 @@ namespace ConnectFour_GroupFour
                 chart_stats_gameStats.Series["Highlight"].Points.AddXY("Player 2", 0);
                 chart_stats_gameStats.Series["Highlight"].Points.AddXY("Draw", 0);
 
-
-
                 //color previous segment
                 if (aiWins - 1 > 0)
                 {
@@ -359,9 +314,6 @@ namespace ConnectFour_GroupFour
                 chart_stats_gameStats.Series["Games"].Points[1].Color = Color.FromArgb(200, 255, 0, 0);
                 chart_stats_gameStats.Series["Games"].Points[2].Color = Color.FromArgb(200, 255, 255, 0);
                 chart_stats_gameStats.Series["Games"].Points[3].Color = Color.FromArgb(200, 255, 165, 0);
-
-
-                
             }
         }
 
@@ -419,20 +371,6 @@ namespace ConnectFour_GroupFour
                     draws = 0;
                     totalGames = aiWins + player1Wins + player2Wins + draws;
 
-                    //AI wins
-                    //String aiWins = "8";
-
-                    //Player wins
-                    //String playerWins = "5";
-
-                    //Draws
-                    //String draws = "7";
-
-                    //Total games
-                    //String totalGames = "20";
-
-                    //StreamWriter writer = new StreamWriter(@"C:\Users\allis\OneDrive\Desktop\CIS153\Homework\ConnectFour_GroupFour\ConnectFour_GroupFour\Stats.txt", false);
-
                     //cleaned up the streamwriter a little here
                     StreamWriter file = new StreamWriter("../../Resources/Stats.txt");
 
@@ -446,27 +384,12 @@ namespace ConnectFour_GroupFour
                     }
 
                     file.Close();
-
-                    //Console.WriteLine(writer.ToString());
-
-                    //writer.WriteLine(aiWins.ToString());
-                    //writer.WriteLine(playerWins.ToString());
-                    //writer.WriteLine(draws.ToString());
-                    //writer.WriteLine(totalGames);
-
-                    //writer.Close();
-
                 }
                 else
                 {
                     //test
                     Console.WriteLine("File Not Empty");
                     ReadFromTextFile();
-
-                    //testing win changes
-                    //Console.WriteLine("After Changes: ");
-                    //UpdateStats(0);
-                    //ReadFromTextFile();
                 }
             }
             catch (IOException e)
@@ -476,7 +399,6 @@ namespace ConnectFour_GroupFour
             }
 
         }
-
         //for testing stat changes
         public void UpdateStats(int winner)
         {
@@ -543,26 +465,6 @@ namespace ConnectFour_GroupFour
                     i++;
                 }
 
-                //try
-                //{
-                //    foreach (String line in l)
-                //    {
-                //        if (line == "")
-                //        {
-                //            l.Remove(line);
-                //        }
-                //    }
-                //}
-                //catch
-                //{
-                //    Console.WriteLine("ERROR! Txt file has a manual error of two empty lines.");
-                //}
-
-                //foreach (String line in l)
-                //{
-                //    Console.WriteLine(line);
-                //}
-
                 file.Close();
 
                 draws = int.Parse(l[0]);
@@ -578,8 +480,6 @@ namespace ConnectFour_GroupFour
                 Console.WriteLine(e.Message);
             }
         }
-
-
         private void InitChart()
         {
             chart_stats_gameStats.Legends.Clear();
@@ -593,7 +493,6 @@ namespace ConnectFour_GroupFour
             chart_stats_gameStats.Series["Games"].Points[2].Color = Color.FromArgb(200, 255, 255, 0);
             chart_stats_gameStats.Series["Games"].Points[3].Color = Color.FromArgb(200, 255, 165, 0);
         }
-
         private void UpdateLabels()
         {
             double aiWinPerc = ((double)aiWins / (double)totalGames) * 100;
@@ -608,15 +507,9 @@ namespace ConnectFour_GroupFour
             lbl_stats_drawPerc.Text = drawPerc.ToString("0.00") + "%";
             lbl_stats_totalGames.Text = totalGames.ToString();
 
-            //chart_stats_gameStats.Series["Games"].Points.AddXY("AI", aiWins);
-            //chart_stats_gameStats.Series["Games"].Points.AddXY("Player 1", player1Wins);
-            //chart_stats_gameStats.Series["Games"].Points.AddXY("Player 2", player2Wins);
-            //chart_stats_gameStats.Series["Games"].Points.AddXY("Draw", draws);
-
             chart_stats_gameStats.Series["Games"].Points.Clear();
 
             InitChart();
-
         }
         //play again, only accessible after a game
         private void PlayAgainButton_Click(object sender, EventArgs e) 
@@ -637,7 +530,6 @@ namespace ConnectFour_GroupFour
                 Console.WriteLine("Reloading Two Player");
                 startForm.loadBoard(2);
             }
-            
         }
         //review, only accessible after a game. only sends you back to the game for now
         private void ReviewButton_Click(object sender, EventArgs e) 
@@ -648,11 +540,8 @@ namespace ConnectFour_GroupFour
             this.Hide();
             //startForm.loadBoard(1);
 
-            //only exit and main menu buttons would work ideally
-            gameForm.reviewBoardDisp();
             gameForm.Show();
         }
-
         private void btn_stats_twoPlayer_Click(object sender, EventArgs e)
         {
             SoundPlayer sp = new SoundPlayer(Properties.Resources.c4select2);

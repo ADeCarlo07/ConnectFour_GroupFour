@@ -93,158 +93,7 @@ namespace ConnectFour_GroupFour
                 startForm.Show();
                 this.Hide();
             }
-            
         }
-
-        //better to handle the text file updates in stats since that is displayed after each game
-
-        ////so we can read info from the text file to properly update it
-        //private int[] ReadFromTextFile()
-        //{
-        //    int[] vals = new int[5];
-        //    try
-        //    {
-        //        String[] lines = File.ReadAllLines("../../Resources/Stats.txt");
-        //        List<String> l = lines.ToList();
-
-        //        try
-        //        {
-        //            foreach (String line in l)
-        //            {
-        //                if (line == "")
-        //                {
-        //                    l.Remove(line);
-        //                }
-        //            }
-        //        }
-        //        catch
-        //        {
-        //            Console.WriteLine("ERROR! Txt file has a manual error of two empty lines.");
-        //        }
-
-        //        foreach (String line in l)
-        //        {
-        //            Console.WriteLine(line);
-        //        }
-
-        //        vals[0] = int.Parse(l[0]);
-        //        vals[1] = int.Parse(l[1]);
-        //        vals[2] = int.Parse(l[2]);
-        //        vals[3] = int.Parse(l[3]);
-        //        vals[4] = int.Parse(l[0]) + int.Parse(l[1]) + int.Parse(l[2]) + int.Parse(l[3]);
-
-        //    }
-        //    catch (IOException e)
-        //    {
-        //        Console.WriteLine("The file could not be read:");
-        //        Console.WriteLine(e.Message);
-        //    }
-
-        //    return vals;
-        //}
-
-        //for when we need to update info in stats file
-        //how to call:
-        //if gameState == 1 then AI won
-        //if gameState == 2 then Player 1 won
-        //if gameState == 3 then Player 2 won
-        //if gameState == 0 then it was a draw
-        //private void UpdateTextFile(int gameState)
-        //{
-        //    int[] vals = ReadFromTextFile();
-        //    String[] lines = File.ReadAllLines("../../Resources/Stats.txt");
-        //    List<String> l = lines.ToList();
-        //    String text = "";
-
-
-        //    ////below is an alternate method of updating the values,
-        //    ////Clears the text file then adds the updated values
-        //    ////we would call this at the function at the end of each game
-
-        //    //StreamWriter file = new StreamWriter("../../Resources/Stats.txt");
-
-        //    ////draws
-        //    //if (gameState == 0)
-        //    //{
-        //    //    vals[0] += 1;
-        //    //    Console.WriteLine("Updated draws: " + vals[0].ToString());
-        //    //}
-        //    ////ai wins
-        //    //if (gameState == 1)
-        //    //{
-        //    //    vals[1] += 1;
-        //    //    Console.WriteLine("Updated AI wins: " + vals[1].ToString());
-        //    //}
-        //    ////player 1 wins
-        //    //if (gameState == 2)
-        //    //{
-        //    //    vals[2] += 1;
-        //    //    Console.WriteLine("Updated Player 1 wins: " + vals[2].ToString());
-        //    //}
-        //    ////player 2 wins
-        //    //else
-        //    //{
-        //    //    vals[3] += 1;
-        //    //    Console.WriteLine("Updated Player 2 wins: " + vals[3].ToString());
-        //    //}
-
-        //    //vals[4] = vals[0] + vals[1] + vals[2] + vals[3];
-
-        //    ////the whole text file is cleared and then replaced with updated stats
-        //    //using (StreamWriter writer = file)
-        //    //{
-        //    //    writer.WriteLine(vals[0].ToString());
-        //    //    writer.WriteLine(vals[1].ToString());
-        //    //    writer.WriteLine(vals[2].ToString());
-        //    //    writer.WriteLine(vals[3].ToString());
-        //    //    writer.WriteLine(vals[4].ToString());
-        //    //}
-
-
-        //    foreach (String line in l)
-        //    {
-        //        if (line == "")
-        //        {
-        //            l.Remove(line);
-        //        }
-        //    }
-
-        //    if (gameState == 1)
-        //    {
-        //        int updatedAIWins = vals[0] + 1;
-        //        Console.WriteLine("Updated AI wins: " + updatedAIWins);
-        //        l[0] = updatedAIWins.ToString();
-        //        l[1] = vals[1].ToString();
-        //        l[2] = vals[2].ToString();
-        //    }
-        //    else if (gameState == 2)
-        //    {
-        //        int updatedPlayerWins = vals[1] + 1;
-        //        Console.WriteLine("Updated Player wins: " + updatedPlayerWins);
-        //        l[0] = vals[0].ToString();
-        //        l[1] = updatedPlayerWins.ToString();
-        //        l[2] = vals[2].ToString();
-        //    }
-        //    else if (gameState == 0)
-        //    {
-        //        int updatedDraws = vals[2] + 1;
-        //        Console.WriteLine("Updated draws: " + updatedDraws);
-        //        l[0] = vals[0].ToString();
-        //        l[1] = vals[1].ToString();
-        //        l[2] = updatedDraws.ToString();
-        //    }
-
-        //    for (int i = 0; i < l.Count; i++)
-        //    {
-        //        text += l[i] + "\n";
-        //    }
-
-        //    //test
-        //    Console.WriteLine(text);
-
-        //    //overwrite text file
-        //    //File.WriteAllText("../../Resources/Stats.txt", text);
-        //}
 
         private void InitializeBoard()
         {
@@ -319,9 +168,6 @@ namespace ConnectFour_GroupFour
                     {
                         Console.WriteLine("ROW: " + c.GetRow() + "    COL: " + c.GetCol());
 
-                        //this is just for testing purposes, when game is more fleshed out there
-                        //will be more checks involved before placing a piece
-                        //added a visual so we can tell at a glance when a piece occupies a cell, images to be added later
                         if (!c.GetCellContainPiece())
                         {
                             //If cell does not contain a piece
@@ -331,9 +177,6 @@ namespace ConnectFour_GroupFour
                                 gameBoard.addPiece(c.GetCol(), currentPlayer);
                             //check for win
                             int winner = gameBoard.CheckWin();
-
-                            //Console.WriteLine("Winner: " + winner);
-                            //Console.WriteLine("Current Player: " + currentPlayer);
 
                             if (winner != 0)
                             {
@@ -413,7 +256,6 @@ namespace ConnectFour_GroupFour
                     }
                 }
             }
-            
         }
         //show player move when the mouse hovers over a cell
         private void CellButtonHover(object sender, EventArgs e)
@@ -449,7 +291,6 @@ namespace ConnectFour_GroupFour
                     }
                 }
             }
-            
         }
         //reset cell color when mouse is no longer hovering
         private void CellButtonLeave(object sender, EventArgs e)
@@ -504,11 +345,6 @@ namespace ConnectFour_GroupFour
             }
         }
 
-        public int getGameMode(int gameMode)
-        {// 1 = vs AI, 2 = 2p
-            return gameMode;
-        }
-
         private void EndGame(int winner)
         {
             sound_win.Play();
@@ -539,51 +375,6 @@ namespace ConnectFour_GroupFour
 
             //sf.Show();
             //this.Hide();
-        }
-        public void reviewBoardDisp()
-        {
-            //need to figure out how to stop the hover from showing
-            //cell_0_0.Enabled = false;
-            //cell_0_1.Enabled = false;
-            //cell_0_3.Enabled = false;
-            //cell_0_4.Enabled = false;
-            //cell_0_5.Enabled = false;
-            //cell_0_6.Enabled = false;
-
-            //cell_1_0.Enabled = false;
-            //cell_1_2.Enabled = false;
-            //cell_1_3.Enabled = false;
-            //cell_1_4.Enabled = false;
-            //cell_1_5.Enabled = false;
-            //cell_1_6.Enabled = false;
-
-            //cell_2_0.Enabled = false;
-            //cell_2_2.Enabled = false;
-            //cell_2_3.Enabled = false;
-            //cell_2_4.Enabled = false;
-            //cell_2_5.Enabled = false;
-            //cell_2_6.Enabled = false;
-
-            //cell_3_0.Enabled = false;
-            //cell_3_2.Enabled = false;
-            //cell_3_3.Enabled = false;
-            //cell_3_4.Enabled = false;
-            //cell_3_5.Enabled = false;
-            //cell_3_6.Enabled = false;
-
-            //cell_4_0.Enabled = false;
-            //cell_4_2.Enabled = false;
-            //cell_4_3.Enabled = false;
-            //cell_4_4.Enabled = false;
-            //cell_4_5.Enabled = false;
-            //cell_4_6.Enabled = false;
-
-            //cell_5_0.Enabled = false;
-            //cell_5_2.Enabled = false;
-            //cell_5_3.Enabled = false;
-            //cell_5_4.Enabled = false;
-            //cell_5_5.Enabled = false;
-            //cell_5_6.Enabled = false;
         }
 
         private void btn_game_returnToStat_Click(object sender, EventArgs e)
