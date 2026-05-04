@@ -1,4 +1,11 @@
-﻿using ConnectFour_GroupFour.Properties;
+﻿//==========================================================
+//Name: Allison DeCarlo, Giovanni Cuadra, Layla Kleinow,
+//      Julian Miles, Elijah Wright
+//Date: 05/10/2026
+//Desc: Connect Four Group Project
+//==========================================================
+
+using ConnectFour_GroupFour.Properties;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

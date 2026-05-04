@@ -59,7 +59,7 @@
             this.chart_stats_gameStats.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chart_stats_gameStats.Legends.Add(legend1);
-            this.chart_stats_gameStats.Location = new System.Drawing.Point(180, 97);
+            this.chart_stats_gameStats.Location = new System.Drawing.Point(167, 97);
             this.chart_stats_gameStats.Name = "chart_stats_gameStats";
             this.chart_stats_gameStats.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SemiTransparent;
             series1.ChartArea = "ChartArea1";
@@ -81,7 +81,7 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(12, 18);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1054, 54);
+            this.label1.Size = new System.Drawing.Size(1042, 54);
             this.label1.TabIndex = 1;
             this.label1.Text = "Statistics";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -113,7 +113,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(685, 507);
+            this.label4.Location = new System.Drawing.Point(680, 507);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(189, 29);
             this.label4.TabIndex = 4;
@@ -145,7 +145,7 @@
             // 
             this.lbl_stats_player2WinPerc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_stats_player2WinPerc.ForeColor = System.Drawing.Color.White;
-            this.lbl_stats_player2WinPerc.Location = new System.Drawing.Point(690, 553);
+            this.lbl_stats_player2WinPerc.Location = new System.Drawing.Point(685, 553);
             this.lbl_stats_player2WinPerc.Name = "lbl_stats_player2WinPerc";
             this.lbl_stats_player2WinPerc.Size = new System.Drawing.Size(184, 40);
             this.lbl_stats_player2WinPerc.TabIndex = 7;
@@ -158,7 +158,7 @@
             this.btn_menu.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(149)))), ((int)(((byte)(217)))));
             this.btn_menu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_menu.ForeColor = System.Drawing.Color.White;
-            this.btn_menu.Location = new System.Drawing.Point(939, 344);
+            this.btn_menu.Location = new System.Drawing.Point(927, 344);
             this.btn_menu.Margin = new System.Windows.Forms.Padding(2);
             this.btn_menu.Name = "btn_menu";
             this.btn_menu.Size = new System.Drawing.Size(106, 51);
@@ -173,7 +173,7 @@
             this.btn_exit.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(149)))), ((int)(((byte)(217)))));
             this.btn_exit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_exit.ForeColor = System.Drawing.Color.White;
-            this.btn_exit.Location = new System.Drawing.Point(939, 435);
+            this.btn_exit.Location = new System.Drawing.Point(927, 435);
             this.btn_exit.Margin = new System.Windows.Forms.Padding(2);
             this.btn_exit.Name = "btn_exit";
             this.btn_exit.Size = new System.Drawing.Size(106, 51);
@@ -185,7 +185,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(149)))), ((int)(((byte)(217)))));
-            this.panel1.Location = new System.Drawing.Point(168, 85);
+            this.panel1.Location = new System.Drawing.Point(155, 85);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(744, 400);
@@ -195,9 +195,9 @@
             // 
             this.lbl_stats_player1WinPerc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_stats_player1WinPerc.ForeColor = System.Drawing.Color.White;
-            this.lbl_stats_player1WinPerc.Location = new System.Drawing.Point(427, 553);
+            this.lbl_stats_player1WinPerc.Location = new System.Drawing.Point(422, 553);
             this.lbl_stats_player1WinPerc.Name = "lbl_stats_player1WinPerc";
-            this.lbl_stats_player1WinPerc.Size = new System.Drawing.Size(184, 40);
+            this.lbl_stats_player1WinPerc.Size = new System.Drawing.Size(186, 40);
             this.lbl_stats_player1WinPerc.TabIndex = 49;
             this.lbl_stats_player1WinPerc.Text = "label5";
             this.lbl_stats_player1WinPerc.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -207,7 +207,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(422, 507);
+            this.label6.Location = new System.Drawing.Point(419, 507);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(189, 29);
             this.label6.TabIndex = 48;
@@ -219,7 +219,7 @@
             this.ReviewButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(149)))), ((int)(((byte)(217)))));
             this.ReviewButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ReviewButton.ForeColor = System.Drawing.Color.White;
-            this.ReviewButton.Location = new System.Drawing.Point(939, 253);
+            this.ReviewButton.Location = new System.Drawing.Point(927, 253);
             this.ReviewButton.Margin = new System.Windows.Forms.Padding(2);
             this.ReviewButton.Name = "ReviewButton";
             this.ReviewButton.Size = new System.Drawing.Size(106, 51);
@@ -234,7 +234,7 @@
             this.PlayAgainButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(149)))), ((int)(((byte)(217)))));
             this.PlayAgainButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PlayAgainButton.ForeColor = System.Drawing.Color.White;
-            this.PlayAgainButton.Location = new System.Drawing.Point(939, 163);
+            this.PlayAgainButton.Location = new System.Drawing.Point(927, 163);
             this.PlayAgainButton.Margin = new System.Windows.Forms.Padding(2);
             this.PlayAgainButton.Name = "PlayAgainButton";
             this.PlayAgainButton.Size = new System.Drawing.Size(106, 51);
@@ -247,7 +247,7 @@
             // 
             this.WinText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.WinText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.WinText.Location = new System.Drawing.Point(934, 85);
+            this.WinText.Location = new System.Drawing.Point(922, 85);
             this.WinText.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.WinText.Name = "WinText";
             this.WinText.Size = new System.Drawing.Size(132, 76);
@@ -259,7 +259,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(951, 507);
+            this.label5.Location = new System.Drawing.Point(942, 507);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(103, 29);
             this.label5.TabIndex = 53;
@@ -269,7 +269,7 @@
             // 
             this.lbl_stats_drawPerc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_stats_drawPerc.ForeColor = System.Drawing.Color.White;
-            this.lbl_stats_drawPerc.Location = new System.Drawing.Point(956, 553);
+            this.lbl_stats_drawPerc.Location = new System.Drawing.Point(947, 553);
             this.lbl_stats_drawPerc.Name = "lbl_stats_drawPerc";
             this.lbl_stats_drawPerc.Size = new System.Drawing.Size(98, 40);
             this.lbl_stats_drawPerc.TabIndex = 54;
